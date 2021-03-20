@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Presentation.Controllers
 {
+    [Produces("application/json")]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -23,6 +24,14 @@ namespace Presentation.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Get the weather forecast for the next 5 days
+        /// </summary>
+        /// <remarks>
+        /// Get the weather forecast for the next 5 days
+        /// </remarks>
+        /// <returns>A list with the weather forecast for the next 5 days</returns>
+        /// <response code="200">Returns a list with the weather forecast for the next 5 days</response>
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
