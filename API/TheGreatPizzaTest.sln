@@ -10,14 +10,21 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheGreatPizzaTest.Application", "src\TheGreatPizzaTest.Application\TheGreatPizzaTest.Application.csproj", "{48C78D74-E00D-4FBF-BD2E-E86A6290C80A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheGreatPizzaTest.Infrastructure", "src\TheGreatPizzaTest.Infrastructure\TheGreatPizzaTest.Infrastructure.csproj", "{105C8D40-5369-4CC1-BA18-94D431F91F96}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9113547A-2E7F-40ED-B220-F37A9F618DD0} = {9113547A-2E7F-40ED-B220-F37A9F618DD0}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheGreatPizzaTest.Application.Tests", "test\TheGreatPizzaTest.Application.Tests\TheGreatPizzaTest.Application.Tests.csproj", "{1E875FCE-A8F5-4C87-9B29-67E88792B8ED}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheGreatPizzaTest.Core.Tests", "test\TheGreatPizzaTest.Core.Tests\TheGreatPizzaTest.Core.Tests.csproj", "{8132292E-1C09-41EC-B316-912B2F2D7D2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheGreatPizzaTest.Infrastructure.Tests", "test\TheGreatPizzaTest.Infrastructure.Tests\TheGreatPizzaTest.Infrastructure.Tests.csproj", "{EC421FDA-10EB-498A-8F2C-F990363DBD15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheGreatPizzaTest.Infrastructure.Tests", "test\TheGreatPizzaTest.Infrastructure.Tests\TheGreatPizzaTest.Infrastructure.Tests.csproj", "{EC421FDA-10EB-498A-8F2C-F990363DBD15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheGreatPizzaTest.Web.Tests", "test\TheGreatPizzaTest.Web.Tests\TheGreatPizzaTest.Web.Tests.csproj", "{E4E84212-B829-40A9-BEB2-914BF0DBA866}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheGreatPizzaTest.Web.Tests", "test\TheGreatPizzaTest.Web.Tests\TheGreatPizzaTest.Web.Tests.csproj", "{E4E84212-B829-40A9-BEB2-914BF0DBA866}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EC93EBB2-FD59-4D25-B6A9-C22597581CBC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5902B233-6C46-4CAC-93C2-C2E69DB84754}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +67,16 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5C18B39D-C5E3-4C53-B89D-C3FC86A6737A} = {EC93EBB2-FD59-4D25-B6A9-C22597581CBC}
+		{9113547A-2E7F-40ED-B220-F37A9F618DD0} = {EC93EBB2-FD59-4D25-B6A9-C22597581CBC}
+		{48C78D74-E00D-4FBF-BD2E-E86A6290C80A} = {EC93EBB2-FD59-4D25-B6A9-C22597581CBC}
+		{105C8D40-5369-4CC1-BA18-94D431F91F96} = {EC93EBB2-FD59-4D25-B6A9-C22597581CBC}
+		{1E875FCE-A8F5-4C87-9B29-67E88792B8ED} = {5902B233-6C46-4CAC-93C2-C2E69DB84754}
+		{8132292E-1C09-41EC-B316-912B2F2D7D2B} = {5902B233-6C46-4CAC-93C2-C2E69DB84754}
+		{EC421FDA-10EB-498A-8F2C-F990363DBD15} = {5902B233-6C46-4CAC-93C2-C2E69DB84754}
+		{E4E84212-B829-40A9-BEB2-914BF0DBA866} = {5902B233-6C46-4CAC-93C2-C2E69DB84754}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0F4C6D9A-CD0D-4E7E-97BE-BA513CD00717}

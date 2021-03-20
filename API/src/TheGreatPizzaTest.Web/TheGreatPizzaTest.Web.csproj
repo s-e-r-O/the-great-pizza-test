@@ -13,5 +13,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
   </ItemGroup>
 	
+	<ItemGroup>
+		<ProjectReference Include="..\TheGreatPizzaTest.Application\TheGreatPizzaTest.Application.csproj" />
+		<ProjectReference Include="..\TheGreatPizzaTest.Infrastructure\TheGreatPizzaTest.Infrastructure.csproj" />
+	</ItemGroup>
 
 </Project>
