@@ -7,7 +7,11 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
 using System.Reflection;
+using TheGreatPizzaTest.Core.Repositories;
+using TheGreatPizzaTest.Core.Repositories.Base;
 using TheGreatPizzaTest.Infrastructure.Data;
+using TheGreatPizzaTest.Infrastructure.Repositories;
+using TheGreatPizzaTest.Infrastructure.Repositories.Base;
 
 namespace Presentation
 {
@@ -30,8 +34,12 @@ namespace Presentation
                 c.IncludeXmlComments(xmlPath);
             });
 
+            // Add Infrastructure Layer
             services.AddDbContext<TheGreatPizzaTestDBContext>(c =>
                 c.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IPizzaRepository, PizzaRepository>();
+            services.AddScoped<IIngredientRepository, IngredientRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
