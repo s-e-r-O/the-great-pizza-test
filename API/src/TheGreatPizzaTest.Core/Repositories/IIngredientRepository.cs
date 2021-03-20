@@ -8,7 +8,7 @@ using TheGreatPizzaTest.Core.Repositories.Base;
 
 namespace TheGreatPizzaTest.Core.Repositories
 {
-    interface IIngredientRepository : IRepository<Ingredient>
+    public interface IIngredientRepository : IRepository<Ingredient>
     {
     }
 }
