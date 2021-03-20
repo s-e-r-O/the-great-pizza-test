@@ -11,6 +11,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheGreatPizzaTest.Applicati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheGreatPizzaTest.Infrastructure", "src\TheGreatPizzaTest.Infrastructure\TheGreatPizzaTest.Infrastructure.csproj", "{105C8D40-5369-4CC1-BA18-94D431F91F96}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheGreatPizzaTest.Application.Tests", "test\TheGreatPizzaTest.Application.Tests\TheGreatPizzaTest.Application.Tests.csproj", "{1E875FCE-A8F5-4C87-9B29-67E88792B8ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheGreatPizzaTest.Core.Tests", "test\TheGreatPizzaTest.Core.Tests\TheGreatPizzaTest.Core.Tests.csproj", "{8132292E-1C09-41EC-B316-912B2F2D7D2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheGreatPizzaTest.Infrastructure.Tests", "test\TheGreatPizzaTest.Infrastructure.Tests\TheGreatPizzaTest.Infrastructure.Tests.csproj", "{EC421FDA-10EB-498A-8F2C-F990363DBD15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheGreatPizzaTest.Web.Tests", "test\TheGreatPizzaTest.Web.Tests\TheGreatPizzaTest.Web.Tests.csproj", "{E4E84212-B829-40A9-BEB2-914BF0DBA866}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
