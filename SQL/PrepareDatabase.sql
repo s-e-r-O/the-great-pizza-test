@@ -15,22 +15,31 @@ GO
 USE [TheGreatPizzaTestDB];
 GO
 CREATE TABLE [dbo].[Pizzas] (
-    [Id] INT IDENTITY PRIMARY KEY CLUSTERED,
+    [Id] INT IDENTITY NOT NULL,
     [Name] NVARCHAR(50) NOT NULL,
+    
+    CONSTRAINT [PK_Pizza] PRIMARY KEY CLUSTERED ([Id])
 );
 CREATE TABLE [dbo].[Ingredients] (
-    [Id] INT IDENTITY PRIMARY KEY CLUSTERED,
+    [Id] INT IDENTITY NOT NULL,
     [Name] NVARCHAR(50) NOT NULL,
+    
+    CONSTRAINT [PK_Ingredient] PRIMARY KEY CLUSTERED ([Id])
 );
 CREATE TABLE [dbo].[PizzaToppings] (
     [PizzaId] INT NOT NULL,
     [IngredientId] INT NOT NULL,
 
-    FOREIGN KEY([PizzaId]) REFERENCES [dbo].[Pizzas](Id) ON DELETE CASCADE,
-    FOREIGN KEY([IngredientId]) REFERENCES [dbo].[Ingredients](Id) ON DELETE CASCADE,
+    CONSTRAINT [FK_PizzaToppings_Pizzas_PizzaId] FOREIGN KEY([PizzaId]) REFERENCES [dbo].[Pizzas]([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_PizzaToppings_Ingredients_IngredientId] FOREIGN KEY([IngredientId]) REFERENCES [dbo].[Ingredients]([Id]) ON DELETE CASCADE,
 
-    PRIMARY KEY CLUSTERED ([PizzaId], [IngredientId])
+    CONSTRAINT [PK_PizzaTopping] PRIMARY KEY CLUSTERED ([PizzaId], [IngredientId])
 );
+GO
+CREATE NONCLUSTERED INDEX [IX_PizzaToppings_PizzaId]
+    ON [dbo].[PizzaToppings]([PizzaId] ASC);
+CREATE NONCLUSTERED INDEX [IX_PizzaToppings_IngredientId]
+    ON [dbo].[PizzaToppings]([IngredientId] ASC);
 GO
 
 -- Populate the database with example data (and some pizzas)
