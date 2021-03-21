@@ -17,6 +17,12 @@ namespace TheGreatPizzaTest.Infrastructure.Repositories
         {
         }
 
+        public async Task<PizzaTopping> GetToppingAsync(int pizzaId, int ingredientId)
+        {
+            var spec = new ToppingFromPizzaAndIngredientSpecification(pizzaId, ingredientId);
+            return await GetByIdAsync(spec);
+        }
+
         public async Task<IReadOnlyList<PizzaTopping>> GetToppingsFromPizzaAsync(int pizzaId)
         {
             var spec = new ToppingsFromPizzaSpecification(pizzaId);

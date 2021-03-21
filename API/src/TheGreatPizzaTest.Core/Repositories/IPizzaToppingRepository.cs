@@ -10,6 +10,7 @@ namespace TheGreatPizzaTest.Core.Repositories
 {
     public interface IPizzaToppingRepository : IRepository<PizzaTopping>
     {
+        Task<PizzaTopping> GetToppingAsync(int pizzaId, int ingredientId);
         Task<IReadOnlyList<PizzaTopping>> GetToppingsFromPizzaAsync(int pizzaId);
     }
 }
