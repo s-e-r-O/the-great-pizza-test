@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using TheGreatPizzaTest.Core.Entities.Base;
 
 #nullable disable
 
 namespace TheGreatPizzaTest.Core.Entities
 {
-    public partial class PizzaTopping
+    public partial class PizzaTopping : JoinEntity<Pizza, Ingredient>
     {
         public int PizzaId { get; set; }
         public int IngredientId { get; set; }

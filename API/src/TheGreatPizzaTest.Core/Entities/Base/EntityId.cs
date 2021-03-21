@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TheGreatPizzaTest.Core.Entities.Base
 {
-    public abstract class EntityBase<TId>
+    public abstract class Entity<TId> : Entity
     {
         public virtual TId Id { get; protected set; }
     }

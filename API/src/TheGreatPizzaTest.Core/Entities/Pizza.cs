@@ -6,7 +6,7 @@ using TheGreatPizzaTest.Core.Entities.Base;
 
 namespace TheGreatPizzaTest.Core.Entities
 {
-    public partial class Pizza : Entity
+    public partial class Pizza : Entity<int>
     {
         public Pizza()
         {
