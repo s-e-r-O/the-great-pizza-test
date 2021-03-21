@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheGreatPizzaTest.Application.DTOs;
+using TheGreatPizzaTest.Application.Models;
 
 namespace TheGreatPizzaTest.Application.Interfaces
 {
@@ -11,8 +12,8 @@ namespace TheGreatPizzaTest.Application.Interfaces
     {
         Task<IEnumerable<PizzaDto>> GetPizzasAsync();
         Task<PizzaDto> GetPizzaByIdAsync(int id);
-        Task<PizzaDto> Create(PizzaDto pizza);
-        Task Update(PizzaDto pizza);
+        Task<PizzaDto> Create(CreatePizzaModel pizza);
+        Task Update(UpdatePizzaModel pizza);
         Task Delete(int id);
     }
 }

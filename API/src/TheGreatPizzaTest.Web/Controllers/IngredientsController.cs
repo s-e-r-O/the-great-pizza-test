@@ -3,9 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using TheGreatPizzaTest.Application.DTOs;
 using TheGreatPizzaTest.Application.Interfaces;
+using TheGreatPizzaTest.Application.Models;
+using TheGreatPizzaTest.Web.Exceptions;
 
 namespace TheGreatPizzaTest.Web.Controllers
 {
@@ -41,14 +44,18 @@ namespace TheGreatPizzaTest.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IngredientDto> PostPizza([FromBody] IngredientDto ingredient)
+        public async Task<IngredientDto> PostPizza([FromBody] CreateIngredientModel ingredient)
         {
             return await _ingredientService.Create(ingredient);
         }
 
         [HttpPut("{id}")]
-        public async Task PutPizza([FromRoute] int id, [FromBody] IngredientDto ingredient)
+        public async Task PutPizza([FromRoute] int id, [FromBody] UpdateIngredientModel ingredient)
         {
+            if (id != ingredient.Id)
+            {
+                throw new HttpException(HttpStatusCode.BadRequest, "Ids don't match");
+            }
             await _ingredientService.Update(ingredient);
         }
 
