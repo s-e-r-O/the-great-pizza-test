@@ -12,6 +12,5 @@ namespace TheGreatPizzaTest.Application.Models
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
-        public ICollection<CreateIngredientModel> Ingredients { get; set; }
     }
 }
