@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
 using System.Reflection;
+using TheGreatPizzaTest.Application.Common.Mappings;
 using TheGreatPizzaTest.Core.Repositories;
 using TheGreatPizzaTest.Core.Repositories.Base;
 using TheGreatPizzaTest.Infrastructure.Data;
@@ -35,6 +37,11 @@ namespace Presentation
                 string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+            });
+            
+            // Add Application Layer
+            services.AddAutoMapper(cfg => {
+                cfg.AddProfile<MappingProfile>();
             });
 
             // Add Infrastructure Layer
