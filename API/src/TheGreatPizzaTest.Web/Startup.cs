@@ -9,6 +9,8 @@ using System;
 using System.IO;
 using System.Reflection;
 using TheGreatPizzaTest.Application.Common.Mappings;
+using TheGreatPizzaTest.Application.Interfaces;
+using TheGreatPizzaTest.Application.Services;
 using TheGreatPizzaTest.Core.Repositories;
 using TheGreatPizzaTest.Core.Repositories.Base;
 using TheGreatPizzaTest.Infrastructure.Data;
@@ -43,6 +45,7 @@ namespace Presentation
             services.AddAutoMapper(cfg => {
                 cfg.AddProfile<MappingProfile>();
             });
+            services.AddScoped<IPizzaService, PizzaService>();
 
             // Add Infrastructure Layer
             services.AddDbContext<TheGreatPizzaTestDBContext>(c =>
