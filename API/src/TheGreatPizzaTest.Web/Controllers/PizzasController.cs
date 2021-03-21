@@ -30,9 +30,33 @@ namespace TheGreatPizzaTest.Web.Controllers
         /// <returns>A list of all of the pizzas, each with a list of its ingredients</returns>
         /// <response code="200">Returns a list of all of the pizzas, each with a list of its ingredients</response>
         [HttpGet]
-        public async Task<IEnumerable<PizzaDto>> GetAsync()
+        public async Task<IEnumerable<PizzaDto>> GetAll()
         {
             return await _pizzaService.GetPizzasAsync();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<PizzaDto> GetById([FromRoute] int id)
+        {
+            return await _pizzaService.GetPizzaByIdAsync(id);
+        }
+        
+        [HttpPost]
+        public async Task<PizzaDto> PostPizza([FromBody] PizzaDto pizza)
+        {
+            return await _pizzaService.Create(pizza);
+        }
+
+        [HttpPut("{id}")]
+        public async Task PutPizza([FromRoute] int id, [FromBody] PizzaDto pizza)
+        {
+            await _pizzaService.Update(pizza);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task DeletePizza([FromRoute] int id)
+        {
+            await _pizzaService.Delete(id);
         }
     }
 }
