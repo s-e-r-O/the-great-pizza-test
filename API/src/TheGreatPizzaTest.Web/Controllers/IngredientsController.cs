@@ -34,5 +34,28 @@ namespace TheGreatPizzaTest.Web.Controllers
         {
             return await _ingredientService.GetIngredientsAsync();
         }
+        [HttpGet("{id}")]
+        public async Task<IngredientDto> GetById([FromRoute] int id)
+        {
+            return await _ingredientService.GetIngredientByIdAsync(id);
+        }
+
+        [HttpPost]
+        public async Task<IngredientDto> PostPizza([FromBody] IngredientDto ingredient)
+        {
+            return await _ingredientService.Create(ingredient);
+        }
+
+        [HttpPut("{id}")]
+        public async Task PutPizza([FromRoute] int id, [FromBody] IngredientDto ingredient)
+        {
+            await _ingredientService.Update(ingredient);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task DeletePizza([FromRoute] int id)
+        {
+            await _ingredientService.Delete(id);
+        }
     }
 }
