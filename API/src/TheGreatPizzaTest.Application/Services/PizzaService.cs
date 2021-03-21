@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheGreatPizzaTest.Application.DTOs;
+using TheGreatPizzaTest.Application.Exceptions;
 using TheGreatPizzaTest.Application.Interfaces;
 using TheGreatPizzaTest.Application.Models;
 using TheGreatPizzaTest.Core.Entities;
@@ -43,6 +44,10 @@ namespace TheGreatPizzaTest.Application.Services
         public async Task Update(UpdatePizzaModel pizza)
         {
             var editPizza = await _pizzaRepository.GetByIdAsync(pizza.Id.Value);
+            if (editPizza == null)
+            {
+                throw new EntityCantBeLoadedException<Pizza>(pizza.Id.ToString());
+            }
             _mapper.Map(pizza, editPizza);
             await _pizzaRepository.UpdateAsync(editPizza);
         }
@@ -50,6 +55,10 @@ namespace TheGreatPizzaTest.Application.Services
         public async Task Delete(int id)
         {
             var deletePizza = await _pizzaRepository.GetByIdAsync(id);
+            if (deletePizza == null)
+            {
+                throw new EntityCantBeLoadedException<Pizza>(id.ToString());
+            }
             await _pizzaRepository.DeleteAsync(deletePizza);
         }
     }
