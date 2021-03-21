@@ -21,6 +21,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheGreatPizzaTest.Infrastructure.Tests", "test\TheGreatPizzaTest.Infrastructure.Tests\TheGreatPizzaTest.Infrastructure.Tests.csproj", "{EC421FDA-10EB-498A-8F2C-F990363DBD15}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheGreatPizzaTest.Web.Tests", "test\TheGreatPizzaTest.Web.Tests\TheGreatPizzaTest.Web.Tests.csproj", "{E4E84212-B829-40A9-BEB2-914BF0DBA866}"
+	ProjectSection(ProjectDependencies) = postProject
+		{48C78D74-E00D-4FBF-BD2E-E86A6290C80A} = {48C78D74-E00D-4FBF-BD2E-E86A6290C80A}
+		{5C18B39D-C5E3-4C53-B89D-C3FC86A6737A} = {5C18B39D-C5E3-4C53-B89D-C3FC86A6737A}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EC93EBB2-FD59-4D25-B6A9-C22597581CBC}"
 EndProject
