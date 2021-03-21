@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TheGreatPizzaTest.Application.DTOs;
 using TheGreatPizzaTest.Application.Interfaces;
+using TheGreatPizzaTest.Application.Models;
 using TheGreatPizzaTest.Core.Entities;
 using TheGreatPizzaTest.Core.Repositories;
 
@@ -32,16 +33,16 @@ namespace TheGreatPizzaTest.Application.Services
             return _mapper.Map<IngredientDto>(ingredient);
         }
 
-        public async Task<IngredientDto> Create(IngredientDto ingredient)
+        public async Task<IngredientDto> Create(CreateIngredientModel ingredient)
         {
             var mappedIngredient = _mapper.Map<Ingredient>(ingredient);
             var newIngredient = await _ingredientRepository.AddAsync(mappedIngredient);
             return _mapper.Map<IngredientDto>(newIngredient);
         }
 
-        public async Task Update(IngredientDto ingredient)
+        public async Task Update(UpdateIngredientModel ingredient)
         {
-            var editIngredient = await _ingredientRepository.GetByIdAsync(ingredient.Id);
+            var editIngredient = await _ingredientRepository.GetByIdAsync(ingredient.Id.Value);
             _mapper.Map(ingredient, editIngredient);
             await _ingredientRepository.UpdateAsync(editIngredient);
         }
