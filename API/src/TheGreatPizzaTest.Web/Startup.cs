@@ -20,6 +20,7 @@ using TheGreatPizzaTest.Infrastructure.Data;
 using TheGreatPizzaTest.Infrastructure.Repositories;
 using TheGreatPizzaTest.Infrastructure.Repositories.Base;
 using TheGreatPizzaTest.Web.Exceptions;
+using TheGreatPizzaTest.Web.Exceptions.Base;
 using TheGreatPizzaTest.Web.Middlewares;
 
 namespace Presentation
