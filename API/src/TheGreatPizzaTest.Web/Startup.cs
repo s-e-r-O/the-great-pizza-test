@@ -47,6 +47,7 @@ namespace Presentation
             });
             services.AddScoped<IPizzaService, PizzaService>();
             services.AddScoped<IIngredientService, IngredientService>();
+            services.AddScoped<IPizzaToppingService, PizzaToppingService>();
 
             // Add Infrastructure Layer
             services.AddDbContext<TheGreatPizzaTestDBContext>(c =>
