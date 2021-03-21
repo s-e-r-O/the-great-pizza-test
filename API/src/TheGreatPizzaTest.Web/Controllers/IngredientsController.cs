@@ -35,7 +35,7 @@ namespace TheGreatPizzaTest.Web.Controllers
         /// <response code="200">Successsful operation</response>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<IngredientDto>>> GetAsync()
+        public async Task<ActionResult<IEnumerable<IngredientDto>>> GetAll()
         {
             return Ok(await _ingredientService.GetIngredientsAsync());
         }
