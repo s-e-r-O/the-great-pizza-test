@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheGreatPizzaTest.Application.DTOs;
+using TheGreatPizzaTest.Core.Entities;
 
 namespace TheGreatPizzaTest.Application.Common.Mappings
 {
@@ -11,6 +13,8 @@ namespace TheGreatPizzaTest.Application.Common.Mappings
     {
         public MappingProfile()
         {
+            CreateMap<Pizza, PizzaDto>();
+            CreateMap<Ingredient, IngredientDto>();
         }
     }
 }
