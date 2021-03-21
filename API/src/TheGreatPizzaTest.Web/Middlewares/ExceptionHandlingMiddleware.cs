@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TheGreatPizzaTest.Web.Exceptions;
+using TheGreatPizzaTest.Web.Exceptions.Base;
 using TheGreatPizzaTest.Web.Models;
 
 namespace TheGreatPizzaTest.Web.Middlewares
@@ -33,13 +34,11 @@ namespace TheGreatPizzaTest.Web.Middlewares
         private async Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             var errorResponse = new ErrorResponse();
-
             if (exception is HttpException httpException)
             {
                 errorResponse.Status = httpException.StatusCode;
                 errorResponse.Message = httpException.Message;
             }
-
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)errorResponse.Status;
             await context.Response.WriteAsync(errorResponse.ToJsonString());
