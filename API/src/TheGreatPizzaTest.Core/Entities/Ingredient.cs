@@ -11,9 +11,11 @@ namespace TheGreatPizzaTest.Core.Entities
         public Ingredient()
         {
             PizzaToppings = new HashSet<PizzaTopping>();
+            Pizzas = new HashSet<Pizza>();
         }
         public string Name { get; set; }
 
         public virtual ICollection<PizzaTopping> PizzaToppings { get; set; }
+        public virtual ICollection<Pizza> Pizzas { get; set; }
     }
 }

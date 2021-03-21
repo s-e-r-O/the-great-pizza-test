@@ -38,24 +38,27 @@ namespace TheGreatPizzaTest.Infrastructure.Data
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50);
-            });
+                entity.HasMany(e => e.Ingredients)
+                    .WithMany(e => e.Pizzas)
+                    .UsingEntity<PizzaTopping>(
+                    j => j
+                        .HasOne(pt => pt.Ingredient)
+                        .WithMany(p => p.PizzaToppings)
+                        .HasForeignKey(pt => pt.IngredientId),
+                    j => j
+                        .HasOne(pt => pt.Pizza)
+                        .WithMany(p => p.PizzaToppings)
+                        .HasForeignKey(pt => pt.PizzaId),
+                    j =>
+                    {
+                        j.HasKey(pt => new { pt.PizzaId, pt.IngredientId })
+                            .HasName("PK_PizzaTopping");
 
-            modelBuilder.Entity<PizzaTopping>(entity =>
-            {
-                entity.HasKey(e => new { e.PizzaId, e.IngredientId })
-                    .HasName("PK_PizzaTopping");
+                        j.HasIndex(pt => pt.IngredientId, "IX_PizzaToppings_IngredientId");
 
-                entity.HasIndex(e => e.IngredientId, "IX_PizzaToppings_IngredientId");
-
-                entity.HasIndex(e => e.PizzaId, "IX_PizzaToppings_PizzaId");
-
-                entity.HasOne(d => d.Ingredient)
-                    .WithMany(p => p.PizzaToppings)
-                    .HasForeignKey(d => d.IngredientId);
-
-                entity.HasOne(d => d.Pizza)
-                    .WithMany(p => p.PizzaToppings)
-                    .HasForeignKey(d => d.PizzaId);
+                        j.HasIndex(pt => pt.PizzaId, "IX_PizzaToppings_PizzaId");
+                    }
+                    );
             });
 
             OnModelCreatingPartial(modelBuilder);
