@@ -46,6 +46,7 @@ namespace Presentation
                 cfg.AddProfile<MappingProfile>();
             });
             services.AddScoped<IPizzaService, PizzaService>();
+            services.AddScoped<IIngredientService, IngredientService>();
 
             // Add Infrastructure Layer
             services.AddDbContext<TheGreatPizzaTestDBContext>(c =>
