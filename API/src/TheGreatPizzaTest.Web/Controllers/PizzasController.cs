@@ -15,10 +15,12 @@ namespace TheGreatPizzaTest.Web.Controllers
     public class PizzasController : ControllerBase
     {
         private readonly IPizzaService _pizzaService;
+        private readonly IPizzaToppingService _pizzaToppingService;
 
-        public PizzasController(IPizzaService pizzaService)
+        public PizzasController(IPizzaService pizzaService, IPizzaToppingService pizzaToppingService)
         {
             _pizzaService = pizzaService;
+            _pizzaToppingService = pizzaToppingService;
         }
 
         /// <summary>
@@ -40,7 +42,7 @@ namespace TheGreatPizzaTest.Web.Controllers
         {
             return await _pizzaService.GetPizzaByIdAsync(id);
         }
-        
+
         [HttpPost]
         public async Task<PizzaDto> PostPizza([FromBody] PizzaDto pizza)
         {
@@ -57,6 +59,25 @@ namespace TheGreatPizzaTest.Web.Controllers
         public async Task DeletePizza([FromRoute] int id)
         {
             await _pizzaService.Delete(id);
+        }
+
+
+        [HttpGet("{pizzaId}/toppings")]
+        public async Task<IEnumerable<IngredientDto>> GetToppingsForPizza([FromRoute] int pizzaId)
+        {
+            return await _pizzaToppingService.GetToppingsForPizza(pizzaId);
+        }
+        
+        [HttpPut("{pizzaId}/toppings/{ingredientId}")]
+        public async Task AddToppingToPizza([FromRoute] int pizzaId, [FromRoute] int ingredientId)
+        {
+            await _pizzaToppingService.AddToppingToPizza(pizzaId, ingredientId);
+        }
+        
+        [HttpDelete("{pizzaId}/toppings/{ingredientId}")]
+        public async Task DeleteToppingFromPizza([FromRoute] int pizzaId, [FromRoute] int ingredientId)
+        {
+            await _pizzaToppingService.DeleteToppingFromPizza(pizzaId, ingredientId);
         }
     }
 }
