@@ -15,6 +15,7 @@ namespace TheGreatPizzaTest.Core.Repositories.Base
         Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate);
         Task<IReadOnlyList<T>> GetAsync(ISpecification<T> spec);
         Task<T> GetByIdAsync(int id);
+        Task<T> GetByIdAsync(ISpecification<T> spec);
         Task<T> AddAsync(T entity);
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);

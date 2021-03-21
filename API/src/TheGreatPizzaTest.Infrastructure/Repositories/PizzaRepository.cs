@@ -22,5 +22,10 @@ namespace TheGreatPizzaTest.Infrastructure.Repositories
             var spec = new PizzaWithIngredientsSpecification();
             return await GetAsync(spec);
         }
+        public async Task<Pizza> GetPizzaWithIngredientsAsync(int id)
+        {
+            var spec = new PizzaWithIngredientsSpecification(id);
+            return await GetByIdAsync(spec);
+        }
     }
 }
