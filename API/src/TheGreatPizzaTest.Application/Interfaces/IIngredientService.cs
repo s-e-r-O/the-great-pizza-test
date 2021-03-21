@@ -10,5 +10,9 @@ namespace TheGreatPizzaTest.Application.Interfaces
     public interface IIngredientService
     {
         Task<IEnumerable<IngredientDto>> GetIngredientsAsync();
+        Task<IngredientDto> GetIngredientByIdAsync(int id);
+        Task<IngredientDto> Create(IngredientDto ingredient);
+        Task Update(IngredientDto ingredient);
+        Task Delete(int id);
     }
 }
