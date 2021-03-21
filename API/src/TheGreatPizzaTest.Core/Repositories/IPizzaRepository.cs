@@ -10,5 +10,6 @@ namespace TheGreatPizzaTest.Core.Repositories
 {
     public interface IPizzaRepository : IRepository<Pizza>
     {
+        Task<IReadOnlyList<Pizza>> GetPizzasWithIngredientsAsync();
     }
 }
