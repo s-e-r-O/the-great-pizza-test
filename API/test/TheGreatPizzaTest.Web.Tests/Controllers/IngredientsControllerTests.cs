@@ -32,7 +32,7 @@ namespace TheGreatPizzaTest.Web.Tests.Controllers
         {
             // ARRANGE
             _mockIngredientService.Setup(service => service.GetIngredientsAsync())
-                .Returns(Task.FromResult(_fixture.CreateMany<IngredientDto>(5)));
+                .Returns(Task.FromResult(_fixture.CreateMany<IngredientDto>()));
             var controller = Initialize();
 
             // ACT
@@ -93,7 +93,7 @@ namespace TheGreatPizzaTest.Web.Tests.Controllers
         public async Task PutIngredient_ReturnsOk(UpdateIngredientModel ingredient)
         {
             // ARRANGE
-            _mockIngredientService.Setup(service => service.Update(ingredient))
+            _mockIngredientService.Setup(service => service.Update(It.IsAny<UpdateIngredientModel>()))
                 .Returns(Task.FromResult(0));
             var controller = Initialize();
 
@@ -101,6 +101,7 @@ namespace TheGreatPizzaTest.Web.Tests.Controllers
             var result = await controller.PutIngredient(ingredient.Id.Value, ingredient);
 
             // ASSERT
+            _mockIngredientService.Verify(service => service.Update(ingredient), Times.Once());
             Assert.IsType<OkResult>(result);
         }
 
@@ -115,11 +116,6 @@ namespace TheGreatPizzaTest.Web.Tests.Controllers
             await Assert.ThrowsAsync<UnmatchedIdsException>(() => controller.PutIngredient(mockDifferentId, ingredient));
         }
 
-        private IngredientsController Initialize()
-        {
-            return new IngredientsController(_mockIngredientService.Object);
-        }
-
         [Fact]
         public async Task DeleteIngredient_ReturnsOk()
         {
@@ -127,12 +123,19 @@ namespace TheGreatPizzaTest.Web.Tests.Controllers
             _mockIngredientService.Setup(service => service.Delete(It.IsAny<int>()))
                 .Returns(Task.FromResult(0));
             var controller = Initialize();
+            var mockId = _fixture.Create<int>();
 
             // ACT
-            var result = await controller.DeleteIngredient(_fixture.Create<int>());
+            var result = await controller.DeleteIngredient(mockId);
 
             // ASSERT
+            _mockIngredientService.Verify(service => service.Delete(mockId), Times.Once());
             Assert.IsType<OkResult>(result);
+        }
+
+        private IngredientsController Initialize()
+        {
+            return new IngredientsController(_mockIngredientService.Object);
         }
     }
 }
