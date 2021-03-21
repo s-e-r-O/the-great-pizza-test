@@ -13,8 +13,8 @@ namespace TheGreatPizzaTest.Application.Common.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<Pizza, PizzaDto>();
-            CreateMap<Ingredient, IngredientDto>();
+            CreateMap<Pizza, PizzaDto>().ReverseMap();
+            CreateMap<Ingredient, IngredientDto>().ReverseMap();
         }
     }
 }
