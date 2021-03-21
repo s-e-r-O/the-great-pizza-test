@@ -43,7 +43,12 @@ namespace TheGreatPizzaTest.Web.Controllers
         [HttpGet("{id}")]
         public async Task<PizzaDto> GetById([FromRoute] int id)
         {
-            return await _pizzaService.GetPizzaByIdAsync(id);
+            var pizza = await _pizzaService.GetPizzaByIdAsync(id);
+            if (pizza == null)
+            {
+                throw new NotFoundException("Pizza", id.ToString());
+            }
+            return pizza;
         }
 
         [HttpPost]
@@ -57,7 +62,7 @@ namespace TheGreatPizzaTest.Web.Controllers
         {
             if (id != pizza.Id)
             {
-                throw new HttpException(HttpStatusCode.BadRequest, "Ids don't match");
+                throw new UnmatchedIdsException();
             }
             await _pizzaService.Update(pizza);
         }
@@ -72,6 +77,12 @@ namespace TheGreatPizzaTest.Web.Controllers
         [HttpGet("{pizzaId}/toppings")]
         public async Task<IEnumerable<IngredientDto>> GetToppingsForPizza([FromRoute] int pizzaId)
         {
+            var pizza = await _pizzaService.GetPizzaByIdAsync(pizzaId);
+            if (pizza == null)
+            {
+                throw new NotFoundException("Pizza", pizzaId.ToString());
+            }
+
             return await _pizzaToppingService.GetToppingsForPizza(pizzaId);
         }
         
