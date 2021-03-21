@@ -40,6 +40,8 @@ namespace Presentation
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
 
+            ConfigureModelBindingExceptionHandling(services);
+
             services.AddSwaggerGen(c => {
                 string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -84,6 +86,24 @@ namespace Presentation
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "The Great Pizza Test API");
+            });
+        }
+
+        private void ConfigureModelBindingExceptionHandling(IServiceCollection services)
+        {
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = actionContext =>
+                {
+                    ValidationProblemDetails error = actionContext.ModelState
+                        .Where(e => e.Value.Errors.Count > 0)
+                        .Select(e => new ValidationProblemDetails(actionContext.ModelState)).FirstOrDefault();
+
+                    throw new HttpException(
+                        HttpStatusCode.BadRequest, 
+                        string.Join(" ", error.Errors.SelectMany(e => e.Value).ToArray())
+                    );
+                };
             });
         }
     }
