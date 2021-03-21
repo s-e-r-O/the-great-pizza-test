@@ -28,7 +28,7 @@ namespace TheGreatPizzaTest.Application.Services
 
         public async Task<PizzaDto> GetPizzaByIdAsync(int id)
         {
-            var pizza = await _pizzaRepository.GetByIdAsync(id);
+            var pizza = await _pizzaRepository.GetPizzaWithIngredientsAsync(id);
             return _mapper.Map<PizzaDto>(pizza);
         }
 

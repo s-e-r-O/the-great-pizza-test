@@ -40,6 +40,12 @@ namespace TheGreatPizzaTest.Infrastructure.Repositories.Base
         {
             return await _dbContext.Set<T>().FindAsync(id);
         }
+        public async Task<T> GetByIdAsync(ISpecification<T> spec)
+        {
+            return await SpecificationEvaluator<T>
+                .GetQuery(_dbContext.Set<T>().AsQueryable(), spec)
+                .SingleAsync();
+        }
 
         public async Task<T> AddAsync(T entity)
         {
