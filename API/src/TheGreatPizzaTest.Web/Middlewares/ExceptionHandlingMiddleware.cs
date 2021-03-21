@@ -39,6 +39,10 @@ namespace TheGreatPizzaTest.Web.Middlewares
                 errorResponse.Status = httpException.StatusCode;
                 errorResponse.Message = httpException.Message;
             }
+            if (exception is Application.Exceptions.Base.ApplicationException appException)
+            {
+                errorResponse.Message = appException.Message;
+            }
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)errorResponse.Status;
             await context.Response.WriteAsync(errorResponse.ToJsonString());
