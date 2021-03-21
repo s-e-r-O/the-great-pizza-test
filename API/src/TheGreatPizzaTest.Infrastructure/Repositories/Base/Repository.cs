@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TheGreatPizzaTest.Core.Entities.Base;
 using TheGreatPizzaTest.Core.Repositories.Base;
+using TheGreatPizzaTest.Core.Specifications.Base;
 using TheGreatPizzaTest.Infrastructure.Data;
 
 namespace TheGreatPizzaTest.Infrastructure.Repositories.Base
@@ -27,6 +28,12 @@ namespace TheGreatPizzaTest.Infrastructure.Repositories.Base
         public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate)
         {
             return await _dbContext.Set<T>().Where(predicate).ToListAsync();
+        }
+        public async Task<IReadOnlyList<T>> GetAsync(ISpecification<T> spec)
+        {
+            return await SpecificationEvaluator<T>
+                .GetQuery(_dbContext.Set<T>().AsQueryable(), spec)
+                .ToListAsync();
         }
 
         public async Task<T> GetByIdAsync(int id)
