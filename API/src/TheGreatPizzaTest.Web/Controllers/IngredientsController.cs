@@ -33,12 +33,12 @@ namespace TheGreatPizzaTest.Web.Controllers
         /// <returns>A list of all of the ingredients</returns>
         /// <response code="200">Returns a list of all of the ingredients</response>
         [HttpGet]
-        public async Task<IEnumerable<IngredientDto>> GetAsync()
+        public async Task<ActionResult<IEnumerable<IngredientDto>>> GetAsync()
         {
-            return await _ingredientService.GetIngredientsAsync();
+            return Ok(await _ingredientService.GetIngredientsAsync());
         }
         [HttpGet("{id}")]
-        public async Task<IngredientDto> GetById([FromRoute] int id)
+        public async Task<ActionResult<IngredientDto>> GetById([FromRoute] int id)
         {
             var ingredient = await _ingredientService.GetIngredientByIdAsync(id);
 
@@ -46,29 +46,32 @@ namespace TheGreatPizzaTest.Web.Controllers
             {
                 throw new NotFoundException("Ingredient", id.ToString());
             }
-            return ingredient;
+            return Ok(ingredient);
         }
 
         [HttpPost]
-        public async Task<IngredientDto> PostPizza([FromBody] CreateIngredientModel ingredient)
+        public async Task<ActionResult<IngredientDto>> PostPizza([FromBody] CreateIngredientModel ingredient)
         {
-            return await _ingredientService.Create(ingredient);
+            var newIngredient = await _ingredientService.Create(ingredient);
+            return CreatedAtAction(nameof(GetById), new { id = newIngredient.Id }, newIngredient);
         }
 
         [HttpPut("{id}")]
-        public async Task PutPizza([FromRoute] int id, [FromBody] UpdateIngredientModel ingredient)
+        public async Task<ActionResult> PutPizza([FromRoute] int id, [FromBody] UpdateIngredientModel ingredient)
         {
             if (id != ingredient.Id)
             {
                 throw new UnmatchedIdsException();
             }
             await _ingredientService.Update(ingredient);
+            return Ok();
         }
 
         [HttpDelete("{id}")]
-        public async Task DeletePizza([FromRoute] int id)
+        public async Task<ActionResult> DeletePizza([FromRoute] int id)
         {
             await _ingredientService.Delete(id);
+            return Ok();
         }
     }
 }

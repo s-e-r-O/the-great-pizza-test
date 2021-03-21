@@ -35,47 +35,50 @@ namespace TheGreatPizzaTest.Web.Controllers
         /// <returns>A list of all of the pizzas, each with a list of its ingredients</returns>
         /// <response code="200">Returns a list of all of the pizzas, each with a list of its ingredients</response>
         [HttpGet]
-        public async Task<IEnumerable<PizzaDto>> GetAll()
+        public async Task<ActionResult<IEnumerable<PizzaDto>>> GetAll()
         {
-            return await _pizzaService.GetPizzasAsync();
+            return Ok(await _pizzaService.GetPizzasAsync());
         }
 
         [HttpGet("{id}")]
-        public async Task<PizzaDto> GetById([FromRoute] int id)
+        public async Task<ActionResult<PizzaDto>> GetById([FromRoute] int id)
         {
             var pizza = await _pizzaService.GetPizzaByIdAsync(id);
             if (pizza == null)
             {
                 throw new NotFoundException("Pizza", id.ToString());
             }
-            return pizza;
+            return Ok(pizza);
         }
 
         [HttpPost]
-        public async Task<PizzaDto> PostPizza([FromBody] CreatePizzaModel pizza)
+        public async Task<ActionResult<PizzaDto>> PostPizza([FromBody] CreatePizzaModel pizza)
         {
-            return await _pizzaService.Create(pizza);
+            var newPizza = await _pizzaService.Create(pizza);
+            return CreatedAtAction(nameof(GetById), new { id = newPizza.Id }, newPizza);
         }
 
         [HttpPut("{id}")]
-        public async Task PutPizza([FromRoute] int id, [FromBody] UpdatePizzaModel pizza)
+        public async Task<ActionResult> PutPizza([FromRoute] int id, [FromBody] UpdatePizzaModel pizza)
         {
             if (id != pizza.Id)
             {
                 throw new UnmatchedIdsException();
             }
             await _pizzaService.Update(pizza);
+            return Ok();
         }
 
         [HttpDelete("{id}")]
-        public async Task DeletePizza([FromRoute] int id)
+        public async Task<ActionResult> DeletePizza([FromRoute] int id)
         {
             await _pizzaService.Delete(id);
+            return Ok();
         }
 
 
         [HttpGet("{pizzaId}/toppings")]
-        public async Task<IEnumerable<IngredientDto>> GetToppingsForPizza([FromRoute] int pizzaId)
+        public async Task<ActionResult<IEnumerable<IngredientDto>>> GetToppingsForPizza([FromRoute] int pizzaId)
         {
             var pizza = await _pizzaService.GetPizzaByIdAsync(pizzaId);
             if (pizza == null)
@@ -83,19 +86,21 @@ namespace TheGreatPizzaTest.Web.Controllers
                 throw new NotFoundException("Pizza", pizzaId.ToString());
             }
 
-            return await _pizzaToppingService.GetToppingsForPizza(pizzaId);
+            return Ok(await _pizzaToppingService.GetToppingsForPizza(pizzaId));
         }
         
         [HttpPut("{pizzaId}/toppings/{ingredientId}")]
-        public async Task AddToppingToPizza([FromRoute] int pizzaId, [FromRoute] int ingredientId)
+        public async Task<ActionResult> AddToppingToPizza([FromRoute] int pizzaId, [FromRoute] int ingredientId)
         {
             await _pizzaToppingService.AddToppingToPizza(pizzaId, ingredientId);
+            return Ok();
         }
         
         [HttpDelete("{pizzaId}/toppings/{ingredientId}")]
-        public async Task DeleteToppingFromPizza([FromRoute] int pizzaId, [FromRoute] int ingredientId)
+        public async Task<ActionResult> DeleteToppingFromPizza([FromRoute] int pizzaId, [FromRoute] int ingredientId)
         {
             await _pizzaToppingService.DeleteToppingFromPizza(pizzaId, ingredientId);
+            return Ok();
         }
     }
 }
