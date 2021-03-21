@@ -1,12 +1,15 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Reflection;
 using TheGreatPizzaTest.Application.Common.Mappings;
 using TheGreatPizzaTest.Application.Interfaces;
@@ -16,6 +19,8 @@ using TheGreatPizzaTest.Core.Repositories.Base;
 using TheGreatPizzaTest.Infrastructure.Data;
 using TheGreatPizzaTest.Infrastructure.Repositories;
 using TheGreatPizzaTest.Infrastructure.Repositories.Base;
+using TheGreatPizzaTest.Web.Exceptions;
+using TheGreatPizzaTest.Web.Middlewares;
 
 namespace Presentation
 {
@@ -61,10 +66,7 @@ namespace Presentation
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseGlobalExceptionHandler();
 
             app.UseHttpsRedirection();
 
