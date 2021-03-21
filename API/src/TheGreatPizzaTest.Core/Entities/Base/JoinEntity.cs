@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TheGreatPizzaTest.Core.Entities.Base
 {
-    public class Entity
+    public class JoinEntity<T1, T2> : Entity
     {
     }
 }
