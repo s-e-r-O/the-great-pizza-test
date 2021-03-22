@@ -1,1 +1,6 @@
-{{ ingredients$ | async | json }}
+<mat-chip-list aria-label="Ingredient list" [selectable]="false">
+  <app-ingredient-chip
+    *ngFor="let ingredient of ingredients$ | async; trackBy: trackByFn"
+    [ingredient]="ingredient"
+  ></app-ingredient-chip>
+</mat-chip-list>

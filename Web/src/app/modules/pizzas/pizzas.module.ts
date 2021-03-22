@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { IngredientsSharedModule } from '@shared/modules';
 import { SharedModule } from '@shared/shared.module';
 import { PizzaDialogComponent, PizzaCardComponent } from './components';
 import { PizzasComponent } from './pages';
@@ -16,6 +17,7 @@ import { PizzasEffects } from './store/effects';
     StoreModule.forFeature(fromPizzas.featureKey, fromPizzas.reducers),
     EffectsModule.forFeature([PizzasEffects]),
     SharedModule,
+    IngredientsSharedModule,
   ],
 })
 export class PizzasModule {}

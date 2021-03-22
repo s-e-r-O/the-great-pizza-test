@@ -7,6 +7,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { IngredientsEffects } from './store/effects';
 import * as fromIngredients from './store';
+import { SharedModule } from '@shared/shared.module';
+import { IngredientsSharedModule } from '@shared/modules';
 
 @NgModule({
   declarations: [IngredientsComponent],
@@ -18,6 +20,8 @@ import * as fromIngredients from './store';
       fromIngredients.reducers
     ),
     EffectsModule.forFeature([IngredientsEffects]),
+    SharedModule,
+    IngredientsSharedModule,
   ],
 })
 export class IngredientsModule {}

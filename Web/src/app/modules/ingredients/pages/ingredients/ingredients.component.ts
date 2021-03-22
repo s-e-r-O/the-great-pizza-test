@@ -19,4 +19,8 @@ export class IngredientsComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(IngredientApiActions.loadIngredients());
   }
+
+  trackByFn(index: number, ingredient: IngredientVM): number {
+    return ingredient.id;
+  }
 }

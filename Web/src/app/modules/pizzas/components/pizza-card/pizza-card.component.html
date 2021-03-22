@@ -4,6 +4,10 @@
     <mat-card-subtitle>{{ pizza.ingredients.length }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content
-    ><p>{{ pizza.ingredientsText }}</p></mat-card-content
-  >
+    ><mat-chip-list aria-label="Ingredient list"
+      ><app-ingredient-chip
+        *ngFor="let ingredient of pizza.ingredients"
+        [ingredient]="ingredient"
+      ></app-ingredient-chip></mat-chip-list
+  ></mat-card-content>
 </mat-card>
