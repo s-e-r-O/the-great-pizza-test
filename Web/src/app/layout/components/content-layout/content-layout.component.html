@@ -1,3 +1,8 @@
-<div [@routeAnimations]="prepareOutlet(outlet)">
-  <router-outlet #outlet="outlet"></router-outlet>
-</div>
+<mat-card class="main-app-card">
+  <div
+    class="main-app-card__content"
+    [@routeAnimations]="prepareOutlet(outlet)"
+  >
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+</mat-card>

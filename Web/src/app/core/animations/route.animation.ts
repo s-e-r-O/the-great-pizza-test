@@ -16,13 +16,18 @@ export const slideInFrom = (side: 'left' | 'right') => [
       top: 0,
       [side]: 0,
       width: '100%',
+      opacity: 1,
     }),
   ]),
-  query(':enter', [style({ [side]: '-100%' })]),
+  query(':enter', [style({ [side]: '-100%', opacity: 0 })]),
   query(':leave', animateChild()),
   group([
-    query(':leave', [animate('300ms ease-out', style({ [side]: '100%' }))]),
-    query(':enter', [animate('300ms ease-out', style({ [side]: '0%' }))]),
+    query(':leave', [
+      animate('300ms ease-out', style({ [side]: '100%', opacity: 0 })),
+    ]),
+    query(':enter', [
+      animate('300ms ease-out', style({ [side]: '0%', opacity: 1 })),
+    ]),
   ]),
   query(':enter', animateChild()),
 ];
