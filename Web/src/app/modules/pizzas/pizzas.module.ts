@@ -15,6 +15,7 @@ import { PizzasRoutingModule } from './pizzas-routing.module';
 import * as fromPizzas from './store';
 import { PizzasEffects } from './store/effects';
 import { AddPizzaToppingComponent } from './components/add-pizza-topping/add-pizza-topping.component';
+import { PizzaToppingsComponent } from './components/pizza-toppings/pizza-toppings.component';
 @NgModule({
   declarations: [
     PizzasComponent,
@@ -24,6 +25,7 @@ import { AddPizzaToppingComponent } from './components/add-pizza-topping/add-piz
     CreatePizzaButtonComponent,
     PizzaHeaderComponent,
     AddPizzaToppingComponent,
+    PizzaToppingsComponent,
   ],
   imports: [
     CommonModule,

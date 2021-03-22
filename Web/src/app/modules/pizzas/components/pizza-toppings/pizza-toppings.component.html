@@ -1,0 +1,8 @@
+<mat-chip-list>
+  <app-ingredient-chip
+    *ngFor="let ingredient of pizza.ingredients"
+    [ingredient]="ingredient"
+    [removable]="true"
+    (ingredientRemoved)="onRemoved(ingredient)"
+  ></app-ingredient-chip>
+</mat-chip-list>
