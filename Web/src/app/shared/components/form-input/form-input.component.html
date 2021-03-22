@@ -1,0 +1,43 @@
+<form (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>{{ config.label }}</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="config.formControl"
+      [errorStateMatcher]="matcher"
+      [placeholder]="config.placeholder"
+      (keydown)="handleKeyDown($event)"
+    />
+    <mat-icon color="primary" matPrefix>{{ config.icon }}</mat-icon>
+
+    <mat-error *ngFor="let errorMessage of config.errorMessagesHTML">
+      <span
+        *ngIf="
+          config.formControl.hasError(errorMessage.errorId) &&
+          config.formControl.getError(errorMessage.errorId) as errorPayload
+        "
+        [innerHTML]="errorMessage.message(errorPayload)"
+      >
+      </span>
+    </mat-error>
+    <button
+      mat-button
+      *ngIf="config.formControl.value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="config.formControl.setValue('')"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    [disabled]="!config.formControl.valid"
+  >
+    {{ config.submitMessage }}
+  </button>
+</form>

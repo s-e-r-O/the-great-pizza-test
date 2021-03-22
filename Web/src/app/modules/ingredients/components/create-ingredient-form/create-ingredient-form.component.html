@@ -1,45 +1,4 @@
-<form>
-  <mat-form-field appearance="outline">
-    <mat-label>Create ingredient</mat-label>
-    <input
-      type="text"
-      matInput
-      placeholder="Name"
-      [formControl]="nameFormControl"
-      [errorStateMatcher]="matcher"
-    />
-    <mat-error
-      *ngIf="
-        nameFormControl.hasError('maxlength') &&
-        nameFormControl.getError('maxlength') as maxLengthError
-      "
-    >
-      The name can't be longer than <strong>50 characters</strong> ({{
-        maxLengthError.actualLength
-      }}
-      / {{ maxLengthError.requiredLength }})
-    </mat-error>
-    <mat-error *ngIf="nameFormControl.hasError('required')">
-      Name is <strong>required</strong>
-    </mat-error>
-    <button
-      mat-button
-      *ngIf="nameFormControl.value"
-      matSuffix
-      mat-icon-button
-      aria-label="Clear"
-      (click)="this.nameFormControl.setValue('')"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-  <button
-    mat-button
-    type="submit"
-    [disabled]="!nameFormControl.valid"
-    (click)="onClick()"
-    cdkFocustInitial
-  >
-    Ok
-  </button>
-</form>
+<app-form-input
+  [config]="formInputConfig"
+  (formSubmit)="onSubmit()"
+></app-form-input>
