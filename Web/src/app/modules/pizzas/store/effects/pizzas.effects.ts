@@ -6,12 +6,14 @@ import {
   map,
   pluck,
   switchMap,
+  tap,
   withLatestFrom,
 } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { PizzaDataService } from '@data/services/pizza-data.service';
 import * as fromPizzas from '@modules/pizzas/store';
 import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class PizzasEffects {
@@ -83,9 +85,28 @@ export class PizzasEffects {
     )
   );
 
+  deletePizza$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PizzaApiActions.deletePizza),
+      pluck('pizzaId'),
+      switchMap((pizzaId) =>
+        this.pizzaDataService.delete(pizzaId).pipe(
+          map(() =>
+            PizzaApiActions.deletePizzaSuccess({
+              pizzaId,
+            })
+          ),
+          tap(() => this.router.navigateByUrl('/pizzas')),
+          catchError(() => of(PizzaApiActions.addPizzaFailure()))
+        )
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private pizzaDataService: PizzaDataService,
-    private store: Store<fromPizzas.State>
+    private store: Store<fromPizzas.State>,
+    private router: Router
   ) {}
 }

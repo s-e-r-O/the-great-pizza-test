@@ -44,3 +44,13 @@ export const updatePizzaSuccess = createAction(
   props<{ pizza: Pizza }>()
 );
 export const updatePizzaFailure = createAction('[Pizzas] Update Pizza Failure');
+
+export const deletePizza = createAction(
+  '[Pizzas] Delete Pizza',
+  props<{ pizzaId: number }>()
+);
+export const deletePizzaSuccess = createAction(
+  '[Pizzas] Delete Pizza Success',
+  props<{ pizzaId: number }>()
+);
+export const deletePizzaFailure = createAction('[Pizzas] Delete Pizza Failure');

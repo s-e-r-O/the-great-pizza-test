@@ -32,4 +32,10 @@ export class PizzaHeaderComponent implements OnInit {
       }
     });
   }
+
+  onDelete(): void {
+    this.store.dispatch(
+      PizzaApiActions.deletePizza({ pizzaId: this.pizza.id })
+    );
+  }
 }

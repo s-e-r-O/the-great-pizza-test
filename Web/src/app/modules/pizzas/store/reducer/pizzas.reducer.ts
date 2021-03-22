@@ -75,6 +75,9 @@ export const reducer = createReducer(
       },
       state
     )
+  ),
+  on(PizzaApiActions.deletePizzaSuccess, (state, { pizzaId }) =>
+    adapter.removeOne(pizzaId, state)
   )
 );
 
