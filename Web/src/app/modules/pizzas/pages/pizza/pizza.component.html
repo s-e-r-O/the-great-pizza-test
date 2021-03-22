@@ -1,5 +1,6 @@
 <ng-container *ngIf="pizza$ | async as pizza">
   <app-pizza-header [pizza]="pizza"></app-pizza-header>
+  <app-add-pizza-topping [pizza]="pizza"></app-add-pizza-topping>
   <mat-chip-list>
     <app-ingredient-chip
       *ngFor="let ingredient of pizza.ingredients"

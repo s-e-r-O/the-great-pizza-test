@@ -6,7 +6,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '@env';
 import * as fromPizzas from '@modules/pizzas/store';
 import * as fromIngredients from '@modules/ingredients/store';
-import { PizzasEffects } from '@modules/pizzas/store/effects';
+import {
+  PizzasEffects,
+  PizzaToppingsEffects,
+} from '@modules/pizzas/store/effects';
 import { IngredientsEffects } from '@modules/ingredients/store/effects';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 @NgModule({
@@ -21,7 +24,11 @@ import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
       },
       {}
     ),
-    EffectsModule.forRoot([PizzasEffects, IngredientsEffects]),
+    EffectsModule.forRoot([
+      PizzasEffects,
+      IngredientsEffects,
+      PizzaToppingsEffects,
+    ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

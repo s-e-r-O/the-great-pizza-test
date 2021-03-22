@@ -1,0 +1,21 @@
+<mat-form-field class="example-full-width">
+  <mat-label>Add topping</mat-label>
+  <mat-select [(value)]="selectedToppingId">
+    <mat-option>None</mat-option>
+    <mat-option
+      *ngFor="let ingredient of filteredIngredientOptions$ | async"
+      [value]="ingredient.id"
+    >
+      {{ ingredient.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<button
+  mat-raised-button
+  color="primary"
+  [disabled]="selectedToppingId === undefined"
+  (click)="onAddTopping()"
+>
+  Add
+</button>
