@@ -1,3 +1,4 @@
+<app-create-ingredient-form></app-create-ingredient-form>
 <mat-chip-list aria-label="Ingredient list" [selectable]="false">
   <app-ingredient-chip
     *ngFor="let ingredient of ingredients$ | async; trackBy: trackByFn"

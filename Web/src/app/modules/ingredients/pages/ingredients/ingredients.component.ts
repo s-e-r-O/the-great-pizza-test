@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Ingredient } from '@data/types/models';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromIngredients from '@modules/ingredients/store';
