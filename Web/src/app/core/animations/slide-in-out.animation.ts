@@ -33,7 +33,7 @@ import {
  * ```
  * @param options Variables to control the animation flow
  */
-export const slideInOutListTrigger = (options: {
+export const slideInOutList = (options: {
   /**
    * The height in pixels of an item of the list
    */

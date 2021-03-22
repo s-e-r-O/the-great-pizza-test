@@ -14,6 +14,7 @@ export const slideInFrom = (side: 'left' | 'right') => [
     style({
       position: 'absolute',
       top: 0,
+      bottom: 0,
       [side]: 0,
       width: '100%',
       opacity: 1,
@@ -42,6 +43,7 @@ export const routeAnimation = trigger('routeAnimations', [
         position: 'absolute',
         top: 0,
         left: 0,
+        bottom: 0,
         right: 0,
         opacity: 1,
       }),

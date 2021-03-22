@@ -13,5 +13,14 @@
       [last]="last"
     ></app-pizza-card>
   </mat-selection-list>
+  <div *ngIf="!pizzas.length" class="pizza-empty-state" [@fadeInOut]>
+    <mat-icon class="pizza-empty-state__icon">local_pizza</mat-icon>
+    <h2 class="pizza-empty-state__title">
+      <strong>No pizzas registered</strong>
+    </h2>
+    <h4 class="pizza-empty-state__cta">
+      Add a pizza by clicking the add <mat-icon>add_circle</mat-icon> button
+    </h4>
+  </div>
 </ng-container>
 <app-create-pizza-button></app-create-pizza-button>

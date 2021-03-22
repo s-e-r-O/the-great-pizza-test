@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { slideInOutListTrigger as slideInOutList } from '@app/animations';
+import { fadeInOut, slideInOutList as slideInOutList } from '@app/animations';
 import { PizzaVM } from '@data/types/view-models';
 import * as fromPizzas from '@modules/pizzas/store';
 import { PizzaApiActions } from '@modules/pizzas/store';
@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
       staggerDelay: 50,
       animDuration: 500,
     }),
+    fadeInOut,
   ],
 })
 export class PizzasComponent implements OnInit {
