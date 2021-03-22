@@ -1,18 +1,21 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PizzasRoutingModule } from './pizzas-routing.module';
-import { PizzasComponent } from './pages/pizzas/pizzas.component';
-import { StoreModule } from '@ngrx/store';
-import * as fromPizzas from './store';
+import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { SharedModule } from '@shared/shared.module';
+import { PizzaDialogComponent } from './components';
+import { PizzasComponent } from './pages';
+import { PizzasRoutingModule } from './pizzas-routing.module';
+import * as fromPizzas from './store';
 import { PizzasEffects } from './store/effects';
 @NgModule({
-  declarations: [PizzasComponent],
+  declarations: [PizzasComponent, PizzaDialogComponent],
   imports: [
     CommonModule,
     PizzasRoutingModule,
     StoreModule.forFeature(fromPizzas.featureKey, fromPizzas.reducers),
     EffectsModule.forFeature([PizzasEffects]),
+    SharedModule,
   ],
 })
 export class PizzasModule {}
