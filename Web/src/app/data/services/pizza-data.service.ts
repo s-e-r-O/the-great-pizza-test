@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Ingredient, Pizza } from '@data/types/models';
+import { environment } from '@env';
 import { Observable } from 'rxjs';
 
 const routes = {
-  pizzas: 'pizzas',
-  pizza: (pizzaId: number) => `pizzas/${pizzaId}`,
-  pizzaToppings: (pizzaId: number) => `pizzas/${pizzaId}/toppings`,
+  pizzas: `${environment.apiUrl}/pizzas`,
+  pizza: (pizzaId: number) => `${environment.apiUrl}/pizzas/${pizzaId}`,
+  pizzaToppings: (pizzaId: number) =>
+    `${environment.apiUrl}/pizzas/${pizzaId}/toppings`,
   pizzaTopping: (pizzaId: number, ingredientId: number) =>
-    `pizzas/${pizzaId}/toppings/${ingredientId}`,
+    `${environment.apiUrl}/pizzas/${pizzaId}/toppings/${ingredientId}`,
 };
 
 @Injectable({

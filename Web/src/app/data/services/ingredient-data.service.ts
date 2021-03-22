@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Ingredient } from '@data/types/models';
+import { environment } from '@env';
 import { Observable } from 'rxjs';
 
 const routes = {
-  ingredients: 'ingredients',
-  ingredient: (ingredientId: number) => `ingredients/${ingredientId}`,
+  ingredients: `${environment.apiUrl}/ingredients`,
+  ingredient: (ingredientId: number) =>
+    `${environment.apiUrl}/ingredients/${ingredientId}`,
 };
 
 @Injectable({
