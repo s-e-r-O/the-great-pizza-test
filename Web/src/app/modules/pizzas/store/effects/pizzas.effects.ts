@@ -8,7 +8,7 @@ import * as fromPizzas from '@modules/pizzas/store';
 import { Store } from '@ngrx/store';
 
 @Injectable()
-export class PizzaEffects {
+export class PizzasEffects {
   getPizzas$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PizzaApiActions.loadPizzas, PizzaApiActions.refreshPizzas),
