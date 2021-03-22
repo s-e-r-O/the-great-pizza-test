@@ -3,12 +3,15 @@
   imageAlt="Pizza header"
   headerTitle="Pizzas"
 ></app-card-image-header>
-<mat-selection-list [multiple]="false">
-  <app-pizza-card
-    *ngFor="let pizza of pizzas$ | async; trackBy: trackByFn; last as last"
-    [pizza]="pizza"
-    [routerLink]="[pizza.id]"
-    [last]="last"
-  ></app-pizza-card>
-</mat-selection-list>
+<ng-container *ngIf="pizzas$ | async as pizzas">
+  <mat-selection-list [multiple]="false" [@slideInOutList]="pizzas.length">
+    <app-pizza-card
+      class="pizza-card"
+      *ngFor="let pizza of pizzas; trackBy: trackByFn; last as last"
+      [pizza]="pizza"
+      [routerLink]="[pizza.id]"
+      [last]="last"
+    ></app-pizza-card>
+  </mat-selection-list>
+</ng-container>
 <app-create-pizza-button></app-create-pizza-button>

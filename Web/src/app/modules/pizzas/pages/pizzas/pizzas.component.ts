@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { slideInOutListTrigger as slideInOutList } from '@app/animations';
 import { PizzaVM } from '@data/types/view-models';
 import * as fromPizzas from '@modules/pizzas/store';
 import { PizzaApiActions } from '@modules/pizzas/store';
@@ -7,6 +8,14 @@ import { Observable } from 'rxjs';
 @Component({
   templateUrl: './pizzas.component.html',
   styleUrls: ['./pizzas.component.scss'],
+  animations: [
+    slideInOutList({
+      itemHeight: 72,
+      side: 'right',
+      staggerDelay: 50,
+      animDuration: 500,
+    }),
+  ],
 })
 export class PizzasComponent implements OnInit {
   pizzas$: Observable<PizzaVM[]>;

@@ -15,7 +15,8 @@ export interface State extends EntityState<Pizza> {
 
 export const adapter: EntityAdapter<Pizza> = createEntityAdapter<Pizza>({
   selectId: (p: Pizza) => p.id,
-  sortComparer: (p1: Pizza, p2: Pizza) => (p1.name > p2.name ? 1 : -1),
+  sortComparer: (p1: Pizza, p2: Pizza) =>
+    p1.name.toLowerCase() > p2.name.toLowerCase() ? 1 : -1,
 });
 
 export const initialState: State = adapter.getInitialState({
