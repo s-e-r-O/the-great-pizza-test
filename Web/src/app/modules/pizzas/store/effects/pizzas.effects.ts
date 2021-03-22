@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { PizzaApiActions } from '../actions';
-import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
+import {
+  catchError,
+  map,
+  pluck,
+  switchMap,
+  withLatestFrom,
+} from 'rxjs/operators';
 import { of } from 'rxjs';
 import { PizzaDataService } from '@data/services/pizza-data.service';
 import * as fromPizzas from '@modules/pizzas/store';
@@ -22,6 +28,21 @@ export class PizzasEffects {
           catchError(() => of(PizzaApiActions.loadPizzasFailure()))
         );
       })
+    )
+  );
+
+  addPizza$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PizzaApiActions.addPizza),
+      pluck('pizza'),
+      switchMap((pizza) =>
+        this.pizzaDataService.add(pizza).pipe(
+          map((addedPizza) =>
+            PizzaApiActions.addPizzaSuccess({ pizza: addedPizza })
+          ),
+          catchError(() => of(PizzaApiActions.addPizzaFailure()))
+        )
+      )
     )
   );
 

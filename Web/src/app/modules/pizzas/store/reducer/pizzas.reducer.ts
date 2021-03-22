@@ -30,6 +30,17 @@ export const reducer = createReducer(
       })),
       { ...state, loaded: true }
     )
+  ),
+  on(PizzaApiActions.addPizzaSuccess, (state, { pizza }) =>
+    adapter.addOne(
+      {
+        ...pizza,
+        ingredients: (pizza.ingredients as Ingredient[]).map(
+          (ingredient) => ingredient.id
+        ),
+      },
+      { ...state, loaded: true }
+    )
   )
 );
 
