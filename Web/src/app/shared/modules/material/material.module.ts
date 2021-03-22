@@ -8,7 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatChipsModule } from '@angular/material/chips';
-
+import { MatRippleModule } from '@angular/material/core';
 @NgModule({
   declarations: [],
   imports: [
@@ -21,6 +21,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatToolbarModule,
     MatTabsModule,
     MatChipsModule,
+    MatRippleModule,
   ],
   exports: [
     MatButtonModule,
@@ -31,6 +32,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatToolbarModule,
     MatTabsModule,
     MatChipsModule,
+    MatRippleModule,
   ],
 })
 export class MaterialModule {}
