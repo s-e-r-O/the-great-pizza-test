@@ -1,4 +1,7 @@
-{{ pizzas$ | async | json }}
+<app-pizza-card
+  *ngFor="let pizza of pizzas$ | async; trackBy: trackByFn"
+  [pizza]="pizza"
+></app-pizza-card>
 <button
   mat-fab
   color="primary"
