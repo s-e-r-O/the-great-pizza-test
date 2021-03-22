@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IngredientVM } from '@data/types/view-models';
 
 @Component({
@@ -8,7 +8,13 @@ import { IngredientVM } from '@data/types/view-models';
 })
 export class IngredientChipComponent implements OnInit {
   @Input() ingredient!: IngredientVM;
+  @Input() removable: boolean = false;
+  @Output() ingredientRemoved: EventEmitter<IngredientVM> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
+
+  onRemoved(): void {
+    this.ingredientRemoved.emit(this.ingredient);
+  }
 }

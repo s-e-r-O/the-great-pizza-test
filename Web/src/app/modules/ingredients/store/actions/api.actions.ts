@@ -27,3 +27,15 @@ export const addIngredientSuccess = createAction(
 export const addIngredientFailure = createAction(
   '[Ingredients] Add Ingredient Failure'
 );
+
+export const deleteIngredient = createAction(
+  '[Ingredients] Delete Ingredient',
+  props<{ ingredientId: number }>()
+);
+export const deleteIngredientSuccess = createAction(
+  '[Ingredients] Delete Ingredient Success',
+  props<{ ingredientId: number }>()
+);
+export const deleteIngredientFailure = createAction(
+  '[Ingredients] Delete Ingredient Failure'
+);
