@@ -31,7 +31,7 @@ export class PizzaDataService {
     return this.http.get<Ingredient[]>(routes.pizzaToppings(pizzaId));
   }
 
-  public add(pizza: Pizza): Observable<Pizza> {
+  public add(pizza: Partial<Pizza>): Observable<Pizza> {
     return this.http.post<Pizza>(routes.pizzas, pizza);
   }
 
