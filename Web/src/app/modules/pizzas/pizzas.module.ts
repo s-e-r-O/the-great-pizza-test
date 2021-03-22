@@ -9,7 +9,7 @@ import {
   PizzaCardComponent,
   CreatePizzaButtonComponent,
 } from './components';
-import { PizzasComponent } from './pages';
+import { PizzasComponent, PizzaComponent } from './pages';
 import { PizzasRoutingModule } from './pizzas-routing.module';
 import * as fromPizzas from './store';
 import { PizzasEffects } from './store/effects';
@@ -18,6 +18,7 @@ import { PizzasEffects } from './store/effects';
     PizzasComponent,
     PizzaDialogComponent,
     PizzaCardComponent,
+    PizzaComponent,
     CreatePizzaButtonComponent,
   ],
   imports: [

@@ -1,5 +1,6 @@
 <app-pizza-card
   *ngFor="let pizza of pizzas$ | async; trackBy: trackByFn"
   [pizza]="pizza"
+  [routerLink]="[pizza.id]"
 ></app-pizza-card>
 <app-create-pizza-button></app-create-pizza-button>
