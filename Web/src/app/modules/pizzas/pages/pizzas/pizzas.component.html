@@ -2,11 +2,4 @@
   *ngFor="let pizza of pizzas$ | async; trackBy: trackByFn"
   [pizza]="pizza"
 ></app-pizza-card>
-<button
-  mat-fab
-  color="primary"
-  aria-label="Example icon button with a delete icon"
-  (click)="onAdd()"
->
-  <mat-icon>add</mat-icon>
-</button>
+<app-create-pizza-button></app-create-pizza-button>
