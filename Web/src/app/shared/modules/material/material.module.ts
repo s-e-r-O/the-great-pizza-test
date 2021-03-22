@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [],
@@ -19,6 +20,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatCardModule,
     MatToolbarModule,
     MatTabsModule,
+    MatChipsModule,
   ],
   exports: [
     MatButtonModule,
@@ -28,6 +30,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatCardModule,
     MatToolbarModule,
     MatTabsModule,
+    MatChipsModule,
   ],
 })
 export class MaterialModule {}
