@@ -1,0 +1,33 @@
+.card-header {
+  height: 150px;
+  position: relative;
+  width: calc(100% + 32px);
+  margin: 0 -16px 16px -16px;
+  border-radius: 20px;
+  overflow: hidden;
+  &__cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+  &__image {
+    height: 100%;
+    object-fit: cover;
+    margin-top: 0;
+  }
+  &__scrim {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__text {
+      color: white;
+      font-size: 4rem;
+      font-weight: bolder;
+    }
+  }
+}

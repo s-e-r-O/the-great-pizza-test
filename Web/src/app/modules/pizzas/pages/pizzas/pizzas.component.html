@@ -1,6 +1,14 @@
-<app-pizza-card
-  *ngFor="let pizza of pizzas$ | async; trackBy: trackByFn"
-  [pizza]="pizza"
-  [routerLink]="[pizza.id]"
-></app-pizza-card>
+<app-card-image-header
+  imageSrc="/assets/pizza-header.jpg"
+  imageAlt="Pizza header"
+  headerTitle="Pizzas"
+></app-card-image-header>
+<mat-selection-list [multiple]="false">
+  <app-pizza-card
+    *ngFor="let pizza of pizzas$ | async; trackBy: trackByFn; last as last"
+    [pizza]="pizza"
+    [routerLink]="[pizza.id]"
+    [last]="last"
+  ></app-pizza-card>
+</mat-selection-list>
 <app-create-pizza-button></app-create-pizza-button>

@@ -10,6 +10,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatRippleModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [],
   imports: [
@@ -24,6 +26,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatChipsModule,
     MatRippleModule,
     MatSelectModule,
+    MatDividerModule,
+    MatListModule,
   ],
   exports: [
     MatButtonModule,
@@ -36,6 +40,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatChipsModule,
     MatRippleModule,
     MatSelectModule,
+    MatDividerModule,
+    MatListModule,
   ],
 })
 export class MaterialModule {}
