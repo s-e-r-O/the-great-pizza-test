@@ -22,14 +22,21 @@ export const selectPizzasState = createFeatureSelector<State, fromPizzas.State>(
 export const selectAllPizzas = createSelector(
   createSelector(selectPizzasState, fromPizzas.selectAllPizzas),
   fromIngredients.selectIngredientsEntities,
-  (pizzas, ingredients) =>
-    pizzas.map<PizzaVM>((pizza) => ({
-      ...pizza,
-      ingredients: (pizza.ingredients as number[])
+  (pizzas, ingredients) => {
+    return pizzas.map<PizzaVM>((pizza) => {
+      const mappedIngredients = (pizza.ingredients as number[])
         .map((ingredient) => ingredients[ingredient])
         .filter((ingredient) => !!ingredient)
-        .map((ingredient) => ingredient as NonNullable<IngredientVM>),
-    }))
+        .map((ingredient) => ingredient as NonNullable<IngredientVM>);
+      return {
+        ...pizza,
+        ingredients: mappedIngredients,
+        ingredientsText: mappedIngredients
+          .map((ingredient) => ingredient.name)
+          .join(', '),
+      };
+    });
+  }
 );
 export const selectLoaded = createSelector(
   selectPizzasState,

@@ -32,4 +32,8 @@ export class PizzasComponent implements OnInit {
       }
     });
   }
+
+  trackByFn(index: number, pizza: PizzaVM): number {
+    return pizza.id;
+  }
 }

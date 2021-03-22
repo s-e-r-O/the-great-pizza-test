@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { SharedModule } from '@shared/shared.module';
-import { PizzaDialogComponent } from './components';
+import { PizzaDialogComponent, PizzaCardComponent } from './components';
 import { PizzasComponent } from './pages';
 import { PizzasRoutingModule } from './pizzas-routing.module';
 import * as fromPizzas from './store';
 import { PizzasEffects } from './store/effects';
 @NgModule({
-  declarations: [PizzasComponent, PizzaDialogComponent],
+  declarations: [PizzasComponent, PizzaDialogComponent, PizzaCardComponent],
   imports: [
     CommonModule,
     PizzasRoutingModule,
