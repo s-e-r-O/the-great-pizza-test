@@ -3,11 +3,11 @@
     <mat-icon class="home-tab__icon">local_pizza</mat-icon>
     <strong>The Great Pizza Test</strong>
   </a>
-  <ng-container *ngIf="{ activeLink: activeLink$ | async } as ctx">
+  <ng-container *ngIf="activeLink$ | async as activeLink">
     <a
       mat-tab-link
       *ngFor="let link of links"
-      [active]="ctx.activeLink === link.url"
+      [active]="activeLink.startsWith(link.url)"
       [routerLink]="link.url"
     >
       {{ link.label }}

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PizzasComponent } from './pages';
+import { PizzaGuard } from './guards/pizza.guard';
+import { PizzaComponent, PizzasComponent } from './pages';
 
 const routes: Routes = [
   {
@@ -8,6 +9,14 @@ const routes: Routes = [
     component: PizzasComponent,
     data: {
       animation: 'PizzasComponent',
+    },
+  },
+  {
+    path: ':id',
+    component: PizzaComponent,
+    canActivate: [PizzaGuard],
+    data: {
+      animation: 'fade',
     },
   },
 ];
