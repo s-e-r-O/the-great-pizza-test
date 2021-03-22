@@ -1,0 +1,12 @@
+.app-form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  &__input {
+    flex: 1;
+    margin-right: 10px;
+    &__icon {
+      height: 10px;
+    }
+  }
+}

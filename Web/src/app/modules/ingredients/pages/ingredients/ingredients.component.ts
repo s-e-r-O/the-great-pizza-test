@@ -4,9 +4,11 @@ import { Observable } from 'rxjs';
 import * as fromIngredients from '@modules/ingredients/store';
 import { IngredientApiActions } from '@modules/ingredients/store';
 import { IngredientVM } from '@data/types/view-models';
+import { fadeInOut } from '@app/animations';
 @Component({
   templateUrl: './ingredients.component.html',
   styleUrls: ['./ingredients.component.scss'],
+  animations: [fadeInOut],
 })
 export class IngredientsComponent implements OnInit {
   ingredients$: Observable<IngredientVM[]>;

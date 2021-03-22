@@ -21,6 +21,7 @@ export class PizzaDialogComponent implements OnInit {
       ]),
       label: !data.name ? 'Create pizza' : 'Edit pizza',
       icon: 'local_pizza',
+      iconColor: 'primary',
       placeholder: 'Name',
       errorMessagesHTML: [
         {

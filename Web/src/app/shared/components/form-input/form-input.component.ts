@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { FormInputConfig } from '@shared/models/form-input.config';
 import { CustomErrorStateMatcher } from '@shared/utils/forms';
 
