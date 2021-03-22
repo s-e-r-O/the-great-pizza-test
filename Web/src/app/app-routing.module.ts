@@ -1,20 +1,27 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ContentLayoutComponent } from '@layout/components';
 
 const routes: Routes = [
   {
-    path: 'pizzas',
-    loadChildren: () =>
-      import('./modules/pizzas/pizzas.module').then((m) => m.PizzasModule),
+    path: '',
+    component: ContentLayoutComponent,
+    children: [
+      {
+        path: 'pizzas',
+        loadChildren: () =>
+          import('./modules/pizzas/pizzas.module').then((m) => m.PizzasModule),
+      },
+      {
+        path: 'ingredients',
+        loadChildren: () =>
+          import('./modules/ingredients/ingredients.module').then(
+            (m) => m.IngredientsModule
+          ),
+      },
+      { path: '**', redirectTo: '/pizzas', pathMatch: 'full' },
+    ],
   },
-  {
-    path: 'ingredients',
-    loadChildren: () =>
-      import('./modules/ingredients/ingredients.module').then(
-        (m) => m.IngredientsModule
-      ),
-  },
-  { path: '**', redirectTo: '/pizzas', pathMatch: 'full' },
 ];
 
 @NgModule({
