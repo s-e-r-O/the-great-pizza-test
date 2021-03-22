@@ -10,6 +10,21 @@ export const loadPizzasFailure = createAction('[Pizzas] Load Pizzas Failure');
 export const loadPizzasCanceled = createAction('[Pizzas] Load Pizzas Canceled');
 export const refreshPizzas = createAction('[Pizzas] Refresh Pizzas');
 
+export const loadPizza = createAction(
+  '[Pizzas] Load Pizza',
+  props<{ pizzaId: number }>()
+);
+export const loadPizzaSuccess = createAction(
+  '[Pizzas] Load Pizza Success',
+  props<{ pizza: Pizza }>()
+);
+export const loadPizzaFailure = createAction('[Pizzas] Load Pizza Failure');
+export const loadPizzaCanceled = createAction('[Pizzas] Load Pizza Canceled');
+export const refreshPizza = createAction(
+  '[Pizzas] Refresh Pizza',
+  props<{ pizzaId: number }>()
+);
+
 export const addPizza = createAction(
   '[Pizzas] Add Pizza',
   props<{ pizza: Partial<Pizza> }>()

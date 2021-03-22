@@ -2,6 +2,7 @@ import { IngredientVM, PizzaVM } from '@data/types/view-models';
 import { Action, createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromPizzas from './pizzas.reducer';
 import * as fromIngredients from '@modules/ingredients/store/reducer';
+import { Dictionary } from '@ngrx/entity';
 
 export const featureKey = 'pizzas';
 
@@ -38,7 +39,17 @@ export const selectAllPizzas = createSelector(
     });
   }
 );
+export const selectPizza = createSelector(
+  selectAllPizzas,
+  (pizzas: PizzaVM[], props: { pizzaId: number }) =>
+    pizzas.find((pizza) => pizza.id === props.pizzaId)
+);
 export const selectLoaded = createSelector(
   selectPizzasState,
   fromPizzas.selectLoaded
+);
+export const selectPizzaLoaded = createSelector(
+  createSelector(selectPizzasState, fromPizzas.selectPizzaLoaded),
+  (pizzas: Dictionary<boolean>, props: { pizzaId: number }) =>
+    pizzas[props.pizzaId]
 );

@@ -37,6 +37,11 @@ export const reducer = createReducer(
           state
         )
   ),
+  on(PizzaApiActions.loadPizzaSuccess, (state, { pizza }) =>
+    state.loaded
+      ? state
+      : adapter.addMany(pizza.ingredients as Ingredient[], state)
+  ),
   on(IngredientApiActions.addIngredientSuccess, (state, { ingredient }) =>
     adapter.addOne(ingredient, state)
   ),

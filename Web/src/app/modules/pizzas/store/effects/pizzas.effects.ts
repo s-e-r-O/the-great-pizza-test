@@ -31,6 +31,30 @@ export class PizzasEffects {
     )
   );
 
+  getPizza$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PizzaApiActions.loadPizza, PizzaApiActions.refreshPizza),
+      switchMap((action) =>
+        of(action).pipe(
+          withLatestFrom(
+            this.store.select(fromPizzas.selectPizzaLoaded, {
+              pizzaId: action.pizzaId,
+            })
+          )
+        )
+      ),
+      switchMap(([action, loaded]) => {
+        if (loaded && action.type !== PizzaApiActions.refreshPizza.type) {
+          return of(PizzaApiActions.loadPizzasCanceled());
+        }
+        return this.pizzaDataService.getById(action.pizzaId).pipe(
+          map((pizza) => PizzaApiActions.loadPizzaSuccess({ pizza })),
+          catchError(() => of(PizzaApiActions.loadPizzaFailure()))
+        );
+      })
+    )
+  );
+
   addPizza$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PizzaApiActions.addPizza),

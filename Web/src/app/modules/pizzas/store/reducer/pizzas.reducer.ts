@@ -1,11 +1,16 @@
 import { createReducer, on } from '@ngrx/store';
 import { PizzaApiActions } from '../actions';
 import { Ingredient, Pizza } from '@data/types/models';
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import {
+  createEntityAdapter,
+  Dictionary,
+  EntityAdapter,
+  EntityState,
+} from '@ngrx/entity';
 
 export interface State extends EntityState<Pizza> {
   loaded: boolean;
-  pizzaLoaded: { [id: number]: boolean };
+  pizzaLoaded: Dictionary<boolean>;
 }
 
 export const adapter: EntityAdapter<Pizza> = createEntityAdapter<Pizza>({
@@ -31,6 +36,17 @@ export const reducer = createReducer(
       { ...state, loaded: true }
     )
   ),
+  on(PizzaApiActions.loadPizzaSuccess, (state, { pizza }) =>
+    adapter.upsertOne(
+      {
+        ...pizza,
+        ingredients: (pizza.ingredients as Ingredient[]).map(
+          (ingredient) => ingredient.id
+        ),
+      },
+      { ...state, pizzaLoaded: { ...state.pizzaLoaded, [pizza.id]: true } }
+    )
+  ),
   on(PizzaApiActions.addPizzaSuccess, (state, { pizza }) =>
     adapter.addOne(
       {
@@ -44,5 +60,9 @@ export const reducer = createReducer(
   )
 );
 
-export const { selectAll: selectAllPizzas } = adapter.getSelectors();
+export const {
+  selectAll: selectAllPizzas,
+  selectEntities: selectPizzaEntities,
+} = adapter.getSelectors();
 export const selectLoaded = (state: State) => state.loaded;
+export const selectPizzaLoaded = (state: State) => state.pizzaLoaded;
