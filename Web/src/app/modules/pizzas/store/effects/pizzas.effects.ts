@@ -70,6 +70,19 @@ export class PizzasEffects {
     )
   );
 
+  updatePizza$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PizzaApiActions.updatePizza),
+      pluck('pizza'),
+      switchMap((pizza) =>
+        this.pizzaDataService.update(pizza).pipe(
+          map(() => PizzaApiActions.updatePizzaSuccess({ pizza })),
+          catchError(() => of(PizzaApiActions.updatePizzaFailure()))
+        )
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private pizzaDataService: PizzaDataService,

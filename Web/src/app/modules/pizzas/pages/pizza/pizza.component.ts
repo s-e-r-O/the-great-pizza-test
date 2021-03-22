@@ -11,15 +11,16 @@ import * as fromPizzas from '@modules/pizzas/store';
 })
 export class PizzaComponent implements OnInit {
   pizza$: Observable<PizzaVM | undefined>;
-
+  pizzaId: number | undefined;
   constructor(
     private route: ActivatedRoute,
     private store: Store<fromPizzas.State>
   ) {
     this.pizza$ = this.route.params.pipe(
       switchMap((params) => {
+        this.pizzaId = +params.id;
         return this.store.select(fromPizzas.selectPizza, {
-          pizzaId: +params.id,
+          pizzaId: this.pizzaId,
         });
       })
     );

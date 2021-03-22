@@ -34,3 +34,13 @@ export const addPizzaSuccess = createAction(
   props<{ pizza: Pizza }>()
 );
 export const addPizzaFailure = createAction('[Pizzas] Add Pizza Failure');
+
+export const updatePizza = createAction(
+  '[Pizzas] Update Pizza',
+  props<{ pizza: Pizza }>()
+);
+export const updatePizzaSuccess = createAction(
+  '[Pizzas] Update Pizza Success',
+  props<{ pizza: Pizza }>()
+);
+export const updatePizzaFailure = createAction('[Pizzas] Update Pizza Failure');

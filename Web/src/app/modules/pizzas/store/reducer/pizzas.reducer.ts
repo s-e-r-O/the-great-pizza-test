@@ -33,7 +33,14 @@ export const reducer = createReducer(
           (ingredient) => ingredient.id
         ),
       })),
-      { ...state, loaded: true }
+      {
+        ...state,
+        loaded: true,
+        pizzaLoaded: pizzas.reduce<Dictionary<boolean>>((loaded, pizza) => {
+          loaded[pizza.id] = true;
+          return loaded;
+        }, {}),
+      }
     )
   ),
   on(PizzaApiActions.loadPizzaSuccess, (state, { pizza }) =>
@@ -55,7 +62,18 @@ export const reducer = createReducer(
           (ingredient) => ingredient.id
         ),
       },
-      { ...state, loaded: true }
+      state
+    )
+  ),
+  on(PizzaApiActions.updatePizzaSuccess, (state, { pizza }) =>
+    adapter.updateOne(
+      {
+        id: pizza.id,
+        changes: {
+          name: pizza.name,
+        },
+      },
+      state
     )
   )
 );

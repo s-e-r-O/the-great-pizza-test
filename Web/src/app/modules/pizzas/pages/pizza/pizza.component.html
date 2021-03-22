@@ -1,1 +1,3 @@
-{{ pizza$ | async | json }}
+<ng-container *ngIf="pizza$ | async as pizza">
+  <app-pizza-header [pizza]="pizza"></app-pizza-header>
+</ng-container>

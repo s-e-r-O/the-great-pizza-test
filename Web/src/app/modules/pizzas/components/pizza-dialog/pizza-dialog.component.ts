@@ -19,7 +19,7 @@ export class PizzaDialogComponent implements OnInit {
         Validators.required,
         Validators.maxLength(50),
       ]),
-      label: 'Create pizza',
+      label: !data.name ? 'Create pizza' : 'Edit pizza',
       icon: 'local_pizza',
       placeholder: 'Name',
       errorMessagesHTML: [
