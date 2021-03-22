@@ -13,7 +13,7 @@ export const adapter: EntityAdapter<Ingredient> = createEntityAdapter<Ingredient
   {
     selectId: (p: Ingredient) => p.id,
     sortComparer: (p1: Ingredient, p2: Ingredient) =>
-      p1.name > p2.name ? 1 : -1,
+      p1.name.toLowerCase() > p2.name.toLowerCase() ? 1 : -1,
   }
 );
 
