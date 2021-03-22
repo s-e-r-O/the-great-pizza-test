@@ -13,6 +13,7 @@ import { PizzaVM } from '@data/types/view-models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PizzaCardComponent implements OnInit {
+  @Input() last!: boolean;
   @Input() pizza!: PizzaVM;
 
   constructor() {}

@@ -1,9 +1,16 @@
-<mat-card matRipple>
-  <mat-card-header>
+<mat-list-option matRipple>
+  <mat-icon mat-list-icon>local_pizza</mat-icon>
+  <div mat-line>{{ pizza.name }}</div>
+  <div mat-line>
+    <i>{{ pizza.ingredientsText || "No ingredients" }}</i>
+  </div>
+
+  <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+  <!-- <mat-card-header>
     <mat-card-title>{{ pizza.name }}</mat-card-title>
     <mat-card-subtitle>{{ pizza.ingredients.length }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content
     ><p>{{ pizza.ingredientsText }}</p></mat-card-content
-  >
-</mat-card>
+  > -->
+</mat-list-option>
