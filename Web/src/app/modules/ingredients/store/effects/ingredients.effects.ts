@@ -56,6 +56,23 @@ export class IngredientsEffects {
     )
   );
 
+  deleteIngredient$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(IngredientApiActions.deleteIngredient),
+      pluck('ingredientId'),
+      switchMap((ingredientId) =>
+        this.ingredientDataService.delete(ingredientId).pipe(
+          map(() =>
+            IngredientApiActions.deleteIngredientSuccess({
+              ingredientId,
+            })
+          ),
+          catchError(() => of(IngredientApiActions.addIngredientFailure()))
+        )
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private ingredientDataService: IngredientDataService,

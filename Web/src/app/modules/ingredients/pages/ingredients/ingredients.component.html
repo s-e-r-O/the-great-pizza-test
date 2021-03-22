@@ -3,5 +3,7 @@
   <app-ingredient-chip
     *ngFor="let ingredient of ingredients$ | async; trackBy: trackByFn"
     [ingredient]="ingredient"
+    [removable]="true"
+    (ingredientRemoved)="onIngredientRemoved($event)"
   ></app-ingredient-chip>
 </mat-chip-list>

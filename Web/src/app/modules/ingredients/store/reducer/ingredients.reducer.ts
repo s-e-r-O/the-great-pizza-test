@@ -28,15 +28,20 @@ export const reducer = createReducer(
     adapter.setAll(ingredients, { ...state, loaded: true })
   ),
   on(PizzaApiActions.loadPizzasSuccess, (state, { pizzas }) =>
-    adapter.setAll(
-      pizzas.reduce<Ingredient[]>((ingredients, pizza) => {
-        return ingredients.concat(pizza.ingredients as Ingredient[]);
-      }, []),
-      { ...state, loaded: true }
-    )
+    state.loaded
+      ? state
+      : adapter.addMany(
+          pizzas.reduce<Ingredient[]>((ingredients, pizza) => {
+            return ingredients.concat(pizza.ingredients as Ingredient[]);
+          }, []),
+          state
+        )
   ),
   on(IngredientApiActions.addIngredientSuccess, (state, { ingredient }) =>
-    adapter.addOne(ingredient, { ...state, loaded: true })
+    adapter.addOne(ingredient, state)
+  ),
+  on(IngredientApiActions.deleteIngredientSuccess, (state, { ingredientId }) =>
+    adapter.removeOne(ingredientId, state)
   )
 );
 

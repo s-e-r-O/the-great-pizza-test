@@ -22,4 +22,10 @@ export class IngredientsComponent implements OnInit {
   trackByFn(index: number, ingredient: IngredientVM): number {
     return ingredient.id;
   }
+
+  onIngredientRemoved(ingredient: IngredientVM): void {
+    this.store.dispatch(
+      IngredientApiActions.deleteIngredient({ ingredientId: ingredient.id })
+    );
+  }
 }

@@ -1,1 +1,4 @@
-<mat-chip>{{ ingredient.name }}</mat-chip>
+<mat-chip (removed)="onRemoved()"
+  >{{ ingredient.name }}
+  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+</mat-chip>
