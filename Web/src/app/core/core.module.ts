@@ -8,12 +8,14 @@ import * as fromPizzas from '@modules/pizzas/store';
 import * as fromIngredients from '@modules/ingredients/store';
 import { PizzasEffects } from '@modules/pizzas/store/effects';
 import { IngredientsEffects } from '@modules/ingredients/store/effects';
+import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     StoreModule.forRoot(
       {
+        router: routerReducer,
         [fromPizzas.featureKey]: fromPizzas.reducers,
         [fromIngredients.featureKey]: fromIngredients.reducers,
       },
@@ -24,6 +26,7 @@ import { IngredientsEffects } from '@modules/ingredients/store/effects';
       maxAge: 25,
       logOnly: environment.production,
     }),
+    StoreRouterConnectingModule.forRoot({}),
   ],
 })
 export class CoreModule {}

@@ -1,1 +1,16 @@
-<p>navbar works!</p>
+<nav mat-tab-nav-bar backgroundColor="primary" class="app-toolbar">
+  <a mat-tab-link class="home-tab" routerLink="/">
+    <mat-icon class="home-tab__icon">local_pizza</mat-icon>
+    <strong>The Great Pizza Test</strong>
+  </a>
+  <ng-container *ngIf="{ activeLink: activeLink$ | async } as ctx">
+    <a
+      mat-tab-link
+      *ngFor="let link of links"
+      [active]="ctx.activeLink === link.url"
+      [routerLink]="link.url"
+    >
+      {{ link.label }}
+    </a>
+  </ng-container>
+</nav>
