@@ -34,6 +34,9 @@ export const reducer = createReducer(
       }, []),
       { ...state, loaded: true }
     )
+  ),
+  on(IngredientApiActions.addIngredientSuccess, (state, { ingredient }) =>
+    adapter.addOne(ingredient, { ...state, loaded: true })
   )
 );
 

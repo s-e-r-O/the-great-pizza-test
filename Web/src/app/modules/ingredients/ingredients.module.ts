@@ -9,9 +9,10 @@ import { IngredientsEffects } from './store/effects';
 import * as fromIngredients from './store';
 import { SharedModule } from '@shared/shared.module';
 import { IngredientsSharedModule } from '@shared/modules';
+import { CreateIngredientFormComponent } from './components/create-ingredient-form/create-ingredient-form.component';
 
 @NgModule({
-  declarations: [IngredientsComponent],
+  declarations: [IngredientsComponent, CreateIngredientFormComponent],
   imports: [
     CommonModule,
     IngredientsRoutingModule,

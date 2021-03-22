@@ -15,3 +15,15 @@ export const loadIngredientsCanceled = createAction(
 export const refreshIngredients = createAction(
   '[Ingredients] Refresh Ingredients'
 );
+
+export const addIngredient = createAction(
+  '[Ingredients] Add Ingredient',
+  props<{ ingredient: Partial<Ingredient> }>()
+);
+export const addIngredientSuccess = createAction(
+  '[Ingredients] Add Ingredient Success',
+  props<{ ingredient: Ingredient }>()
+);
+export const addIngredientFailure = createAction(
+  '[Ingredients] Add Ingredient Failure'
+);

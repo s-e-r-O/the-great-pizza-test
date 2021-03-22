@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { IngredientApiActions } from '../actions';
-import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
+import {
+  catchError,
+  map,
+  pluck,
+  switchMap,
+  withLatestFrom,
+} from 'rxjs/operators';
 import { of } from 'rxjs';
 import { IngredientDataService } from '@data/services/ingredient-data.service';
 import * as fromIngredients from '@modules/ingredients/store';
@@ -30,6 +36,23 @@ export class IngredientsEffects {
           catchError(() => of(IngredientApiActions.loadIngredientsFailure()))
         );
       })
+    )
+  );
+
+  addIngredient$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(IngredientApiActions.addIngredient),
+      pluck('ingredient'),
+      switchMap((ingredient) =>
+        this.ingredientDataService.add(ingredient).pipe(
+          map((addedIngredient) =>
+            IngredientApiActions.addIngredientSuccess({
+              ingredient: addedIngredient,
+            })
+          ),
+          catchError(() => of(IngredientApiActions.addIngredientFailure()))
+        )
+      )
     )
   );
 

@@ -24,7 +24,7 @@ export class IngredientDataService {
     return this.http.get<Ingredient>(routes.ingredient(id));
   }
 
-  public add(ingredient: Ingredient): Observable<Ingredient> {
+  public add(ingredient: Partial<Ingredient>): Observable<Ingredient> {
     return this.http.post<Ingredient>(routes.ingredients, ingredient);
   }
 
