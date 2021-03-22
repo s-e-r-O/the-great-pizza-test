@@ -1,5 +1,5 @@
-<form (ngSubmit)="onSubmit()">
-  <mat-form-field>
+<form (ngSubmit)="onSubmit()" class="app-form">
+  <mat-form-field class="app-form__input">
     <mat-label>{{ config.label }}</mat-label>
     <input
       type="text"
@@ -9,7 +9,13 @@
       [placeholder]="config.placeholder"
       (keydown)="handleKeyDown($event)"
     />
-    <mat-icon color="primary" matPrefix>{{ config.icon }}</mat-icon>
+    <mat-icon
+      *ngIf="config.icon"
+      class="app-form__input__icon"
+      [color]="config.iconColor"
+      matPrefix
+      >{{ config.icon }}</mat-icon
+    >
 
     <mat-error *ngFor="let errorMessage of config.errorMessagesHTML">
       <span

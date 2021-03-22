@@ -20,8 +20,7 @@ export class CreateIngredientFormComponent implements OnInit {
         Validators.required,
         Validators.maxLength(50),
       ]),
-      label: 'Create ingredient',
-      icon: 'takeout_dining',
+      label: 'Add ingredient',
       placeholder: 'Name',
       errorMessagesHTML: [
         {
@@ -34,7 +33,7 @@ export class CreateIngredientFormComponent implements OnInit {
             `The name can't be longer than <strong>${err.requiredLength} characters</strong> (${err.actualLength}/${err.requiredLength})`,
         },
       ],
-      submitMessage: 'Ok',
+      submitMessage: 'Add',
     };
   }
 

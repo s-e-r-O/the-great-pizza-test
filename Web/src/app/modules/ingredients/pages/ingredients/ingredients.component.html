@@ -3,12 +3,27 @@
   imageAlt="Ingredients header"
   headerTitle="Ingredients"
 ></app-card-image-header>
-<app-create-ingredient-form></app-create-ingredient-form>
-<mat-chip-list aria-label="Ingredient list" [selectable]="false">
-  <app-ingredient-chip
-    *ngFor="let ingredient of ingredients$ | async; trackBy: trackByFn"
-    [ingredient]="ingredient"
-    [removable]="true"
-    (ingredientRemoved)="onIngredientRemoved($event)"
-  ></app-ingredient-chip>
-</mat-chip-list>
+<section>
+  <h2>Add ingredients</h2>
+  <app-create-ingredient-form></app-create-ingredient-form>
+  <mat-divider></mat-divider>
+</section>
+<section *ngIf="ingredients$ | async as ingredients">
+  <h2>Current ingredients</h2>
+  <mat-chip-list aria-label="Ingredient list" [selectable]="false">
+    <app-ingredient-chip
+      *ngFor="let ingredient of ingredients; trackBy: trackByFn"
+      [ingredient]="ingredient"
+      [removable]="true"
+      (ingredientRemoved)="onIngredientRemoved($event)"
+    ></app-ingredient-chip>
+  </mat-chip-list>
+  <div class="ingredients-empty-state" *ngIf="!ingredients.length" [@fadeInOut]>
+    <h3>
+      <i
+        >You don't have any ingredient added. <strong>Add one</strong> with the
+        form above.</i
+      >
+    </h3>
+  </div>
+</section>
