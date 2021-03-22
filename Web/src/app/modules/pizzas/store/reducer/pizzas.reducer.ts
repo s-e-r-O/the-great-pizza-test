@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { PizzaApiActions } from '../actions';
-import { Pizza } from '@data/types/models';
+import { Ingredient, Pizza } from '@data/types/models';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
 export interface State extends EntityState<Pizza> {
@@ -21,7 +21,15 @@ export const initialState: State = adapter.getInitialState({
 export const reducer = createReducer(
   initialState,
   on(PizzaApiActions.loadPizzasSuccess, (state, { pizzas }) =>
-    adapter.setAll(pizzas, { ...state, loaded: true })
+    adapter.setAll(
+      pizzas.map((pizza) => ({
+        ...pizza,
+        ingredients: (pizza.ingredients as Ingredient[]).map(
+          (ingredient) => ingredient.id
+        ),
+      })),
+      { ...state, loaded: true }
+    )
   )
 );
 

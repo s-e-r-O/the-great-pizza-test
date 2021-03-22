@@ -5,14 +5,14 @@ import { PizzasComponent } from './pages/pizzas/pizzas.component';
 import { StoreModule } from '@ngrx/store';
 import * as fromPizzas from './store';
 import { EffectsModule } from '@ngrx/effects';
-import { PizzaEffects } from './store/effects';
+import { PizzasEffects } from './store/effects';
 @NgModule({
   declarations: [PizzasComponent],
   imports: [
     CommonModule,
     PizzasRoutingModule,
     StoreModule.forFeature(fromPizzas.featureKey, fromPizzas.reducers),
-    EffectsModule.forFeature([PizzaEffects]),
+    EffectsModule.forFeature([PizzasEffects]),
   ],
 })
 export class PizzasModule {}

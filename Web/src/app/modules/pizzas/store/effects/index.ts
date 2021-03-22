@@ -1,1 +1,1 @@
-export * from './pizza.effects';
+export * from './pizzas.effects';
