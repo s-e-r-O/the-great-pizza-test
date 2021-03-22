@@ -1,2 +1,3 @@
 import * as PizzaApiActions from './api.actions';
-export { PizzaApiActions };
+import * as PizzaToppingActions from './topping.actions';
+export { PizzaApiActions, PizzaToppingActions };

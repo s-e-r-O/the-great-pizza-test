@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatRippleModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [],
   imports: [
@@ -22,6 +23,7 @@ import { MatRippleModule } from '@angular/material/core';
     MatTabsModule,
     MatChipsModule,
     MatRippleModule,
+    MatSelectModule,
   ],
   exports: [
     MatButtonModule,
@@ -33,6 +35,7 @@ import { MatRippleModule } from '@angular/material/core';
     MatTabsModule,
     MatChipsModule,
     MatRippleModule,
+    MatSelectModule,
   ],
 })
 export class MaterialModule {}

@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { PizzaApiActions } from '../actions';
+import { PizzaApiActions, PizzaToppingActions } from '../actions';
 import { Ingredient, Pizza } from '@data/types/models';
 import {
   createEntityAdapter,
@@ -22,6 +22,11 @@ export const initialState: State = adapter.getInitialState({
   loaded: false,
   pizzaLoaded: {},
 });
+
+export const {
+  selectAll: selectAllPizzas,
+  selectEntities: selectPizzaEntities,
+} = adapter.getSelectors();
 
 export const reducer = createReducer(
   initialState,
@@ -78,12 +83,51 @@ export const reducer = createReducer(
   ),
   on(PizzaApiActions.deletePizzaSuccess, (state, { pizzaId }) =>
     adapter.removeOne(pizzaId, state)
+  ),
+  on(
+    PizzaToppingActions.addPizzaToppingSuccess,
+    (state, { pizzaId, ingredientId }) => {
+      const pizza = selectPizzaEntities(state)[pizzaId];
+      if (
+        !pizza ||
+        (pizza.ingredients as number[]).findIndex((i) => i === ingredientId) >=
+          0
+      ) {
+        return state;
+      }
+      const ingredients = [...(pizza.ingredients as number[]), ingredientId];
+      return adapter.updateOne(
+        {
+          id: pizzaId,
+          changes: {
+            ingredients,
+          },
+        },
+        state
+      );
+    }
+  ),
+  on(
+    PizzaToppingActions.deletePizzaToppingSuccess,
+    (state, { pizzaId, ingredientId }) => {
+      const pizza = selectPizzaEntities(state)[pizzaId];
+      if (!pizza) {
+        return state;
+      }
+      const ingredients = (pizza.ingredients as number[]).filter(
+        (i) => i !== ingredientId
+      );
+      return adapter.updateOne(
+        {
+          id: pizzaId,
+          changes: {
+            ingredients,
+          },
+        },
+        state
+      );
+    }
   )
 );
-
-export const {
-  selectAll: selectAllPizzas,
-  selectEntities: selectPizzaEntities,
-} = adapter.getSelectors();
 export const selectLoaded = (state: State) => state.loaded;
 export const selectPizzaLoaded = (state: State) => state.pizzaLoaded;
