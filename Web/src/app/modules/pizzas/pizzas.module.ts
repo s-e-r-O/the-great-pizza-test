@@ -8,6 +8,7 @@ import {
   PizzaDialogComponent,
   PizzaCardComponent,
   CreatePizzaButtonComponent,
+  PizzaHeaderComponent,
 } from './components';
 import { PizzasComponent, PizzaComponent } from './pages';
 import { PizzasRoutingModule } from './pizzas-routing.module';
@@ -20,6 +21,7 @@ import { PizzasEffects } from './store/effects';
     PizzaCardComponent,
     PizzaComponent,
     CreatePizzaButtonComponent,
+    PizzaHeaderComponent,
   ],
   imports: [
     CommonModule,
