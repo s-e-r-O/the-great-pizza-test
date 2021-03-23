@@ -27,7 +27,13 @@ export class PizzaHeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (!!result) {
         this.store.dispatch(
-          PizzaApiActions.updatePizza({ pizza: { ...this.pizza, ...result } })
+          PizzaApiActions.updatePizza({
+            pizza: {
+              id: this.pizza.id,
+              ingredients: this.pizza.ingredients,
+              ...result,
+            },
+          })
         );
       }
     });
