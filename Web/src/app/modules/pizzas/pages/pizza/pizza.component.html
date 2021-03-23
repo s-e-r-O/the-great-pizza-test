@@ -1,5 +1,19 @@
-<ng-container *ngIf="pizza$ | async as pizza">
-  <app-pizza-header [pizza]="pizza"></app-pizza-header>
-  <app-add-pizza-topping [pizza]="pizza"></app-add-pizza-topping>
-  <app-pizza-toppings [pizza]="pizza"></app-pizza-toppings>
+<ng-container *ngIf="{ pizza: pizza$ | async } as ctx">
+  <ng-container *ngIf="ctx.pizza">
+    <app-pizza-header [pizza]="ctx.pizza"></app-pizza-header>
+    <app-add-pizza-topping [pizza]="ctx.pizza"></app-add-pizza-topping>
+    <app-pizza-toppings [pizza]="ctx.pizza"></app-pizza-toppings>
+  </ng-container>
+  <div *ngIf="!ctx.pizza" class="pizza-not-found" [@fadeInOut]>
+    <mat-icon class="pizza-not-found__icon">sentiment_dissatisfied</mat-icon>
+    <h2 class="pizza-not-found__title">
+      <strong>Pizza not found</strong>
+    </h2>
+    <h4 class="pizza-not-found__message">
+      Don't worry, there are more pizzas left
+    </h4>
+    <button class="pizza-not-found__cta" mat-raised-button routerLink="/pizzas">
+      Go back to pizzas
+    </button>
+  </div>
 </ng-container>

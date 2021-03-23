@@ -5,9 +5,11 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import * as fromPizzas from '@modules/pizzas/store';
+import { fadeInOut } from '@app/animations';
 @Component({
   templateUrl: './pizza.component.html',
   styleUrls: ['./pizza.component.scss'],
+  animations: [fadeInOut],
 })
 export class PizzaComponent implements OnInit {
   pizza$: Observable<PizzaVM | undefined>;
