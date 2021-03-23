@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { CustomErrorStateMatcher } from '@shared/utils/forms';
 import * as fromIngredients from '@modules/ingredients/store';
-import { Store } from '@ngrx/store';
 import { IngredientApiActions } from '@modules/ingredients/store';
+import { Store } from '@ngrx/store';
 import { FormInputConfig } from '@shared/models';
 
 @Component({
@@ -13,7 +12,6 @@ import { FormInputConfig } from '@shared/models';
 })
 export class CreateIngredientFormComponent implements OnInit {
   formInputConfig: FormInputConfig;
-  matcher = new CustomErrorStateMatcher();
   constructor(private store: Store<fromIngredients.State>) {
     this.formInputConfig = {
       formControl: new FormControl('', [

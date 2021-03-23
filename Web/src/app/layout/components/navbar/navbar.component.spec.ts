@@ -1,6 +1,9 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { NavbarComponent } from './navbar.component';
+import * as fromRouter from '@app/store';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -8,9 +11,14 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
-    })
-    .compileComponents();
+      declarations: [NavbarComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [
+        provideMockStore({
+          selectors: [{ selector: fromRouter.selectUrl, value: '' }],
+        }),
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

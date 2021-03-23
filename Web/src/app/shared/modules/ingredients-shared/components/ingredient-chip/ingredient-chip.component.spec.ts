@@ -8,14 +8,14 @@ describe('IngredientChipComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IngredientChipComponent ]
-    })
-    .compileComponents();
+      declarations: [IngredientChipComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(IngredientChipComponent);
     component = fixture.componentInstance;
+    component.ingredient = { name: '', id: 0 };
     fixture.detectChanges();
   });
 

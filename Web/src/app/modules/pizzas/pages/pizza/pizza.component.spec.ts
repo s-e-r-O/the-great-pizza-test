@@ -1,6 +1,11 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { PizzaComponent } from './pizza.component';
+import * as fromPizzas from '@modules/pizzas/store';
 
 describe('PizzaComponent', () => {
   let component: PizzaComponent;
@@ -8,9 +13,20 @@ describe('PizzaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PizzaComponent ]
-    })
-    .compileComponents();
+      declarations: [PizzaComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [NoopAnimationsModule, RouterTestingModule],
+      providers: [
+        provideMockStore({
+          selectors: [
+            {
+              selector: fromPizzas.selectPizza,
+              value: { id: 0, name: '', ingredients: [] },
+            },
+          ],
+        }),
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

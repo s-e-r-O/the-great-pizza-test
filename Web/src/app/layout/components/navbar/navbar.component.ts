@@ -3,7 +3,6 @@ import * as fromRouter from '@app/store';
 import { RouterReducerState } from '@ngrx/router-store';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
