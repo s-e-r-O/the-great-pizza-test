@@ -1,8 +1,23 @@
-<mat-chip-list>
-  <app-ingredient-chip
-    *ngFor="let ingredient of pizza.ingredients"
-    [ingredient]="ingredient"
-    [removable]="true"
-    (ingredientRemoved)="onRemoved(ingredient)"
-  ></app-ingredient-chip>
-</mat-chip-list>
+<section class="ingredients-list-section">
+  <h2>Current toppings</h2>
+  <mat-chip-list>
+    <app-ingredient-chip
+      *ngFor="let ingredient of pizza.ingredients"
+      [ingredient]="ingredient"
+      [removable]="true"
+      (ingredientRemoved)="onRemoved(ingredient)"
+    ></app-ingredient-chip>
+  </mat-chip-list>
+  <div
+    class="ingredients-empty-state"
+    *ngIf="!pizza.ingredients.length"
+    [@fadeInOut]
+  >
+    <h3>
+      <i
+        >You don't have any toppings added. <strong>Select one</strong> to add
+        with the form above.</i
+      >
+    </h3>
+  </div>
+</section>

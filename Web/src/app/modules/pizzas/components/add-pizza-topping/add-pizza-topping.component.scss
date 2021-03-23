@@ -1,4 +1,9 @@
-.example-list {
-  border: solid 1px;
-  height: 50px;
+.app-form-select {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  &__input {
+    margin-right: 10px;
+    flex: 1;
+  }
 }

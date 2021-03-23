@@ -9,6 +9,7 @@ import { IngredientVM } from '@data/types/view-models';
 export class IngredientChipComponent implements OnInit {
   @Input() ingredient!: IngredientVM;
   @Input() removable: boolean = false;
+  @Input() color: string = 'primary';
   @Output() ingredientRemoved: EventEmitter<IngredientVM> = new EventEmitter();
   constructor() {}
 

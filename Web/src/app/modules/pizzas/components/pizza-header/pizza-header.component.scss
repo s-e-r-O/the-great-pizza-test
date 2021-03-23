@@ -5,3 +5,12 @@
     margin: 0;
   }
 }
+
+.pizza-actions {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  &__edit-button {
+    margin-right: 10px;
+  }
+}
