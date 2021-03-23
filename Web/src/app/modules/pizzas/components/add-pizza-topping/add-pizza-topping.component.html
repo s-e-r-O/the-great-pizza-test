@@ -1,21 +1,37 @@
-<mat-form-field class="example-full-width">
-  <mat-label>Add topping</mat-label>
-  <mat-select [(value)]="selectedToppingId">
-    <mat-option>None</mat-option>
-    <mat-option
-      *ngFor="let ingredient of filteredIngredientOptions$ | async"
-      [value]="ingredient.id"
+<section *ngIf="filteredIngredientOptions$ | async as ingredients">
+  <h2>Add toppings</h2>
+  <h3 *ngIf="!ingredients.length" [@fadeInOut]>
+    <i
+      >There are no toppings available to add. Go to
+      <a routerLink="/ingredients">Ingredients</a> to add more</i
     >
-      {{ ingredient.name }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+  </h3>
+  <section class="app-form-select">
+    <mat-form-field class="app-form-select__input">
+      <mat-label>Add topping</mat-label>
+      <mat-select
+        [(value)]="selectedToppingId"
+        [disabled]="!ingredients.length"
+      >
+        <mat-option>None</mat-option>
+        <mat-option
+          *ngFor="let ingredient of ingredients"
+          [value]="ingredient.id"
+        >
+          {{ ingredient.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-<button
-  mat-raised-button
-  color="primary"
-  [disabled]="selectedToppingId === undefined"
-  (click)="onAddTopping()"
->
-  Add
-</button>
+    <button
+      mat-raised-button
+      class="app-form-select__submit"
+      color="primary"
+      [disabled]="selectedToppingId === undefined"
+      (click)="onAddTopping()"
+    >
+      Add
+    </button>
+  </section>
+  <mat-divider></mat-divider>
+</section>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { fadeInOut } from '@app/animations';
 import { IngredientVM, PizzaVM } from '@data/types/view-models';
 import * as fromIngredients from '@modules/ingredients/store';
 import { IngredientApiActions } from '@modules/ingredients/store';
@@ -11,6 +12,7 @@ import { map } from 'rxjs/operators';
   selector: 'app-add-pizza-topping',
   templateUrl: './add-pizza-topping.component.html',
   styleUrls: ['./add-pizza-topping.component.scss'],
+  animations: [fadeInOut],
 })
 export class AddPizzaToppingComponent implements OnInit {
   @Input() pizza!: PizzaVM;

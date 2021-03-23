@@ -1,4 +1,4 @@
-<mat-chip color="primary" selected (removed)="onRemoved()"
+<mat-chip [color]="color" selected (removed)="onRemoved()"
   >{{ ingredient.name }}
   <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
 </mat-chip>
