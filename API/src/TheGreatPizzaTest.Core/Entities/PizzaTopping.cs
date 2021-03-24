@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using TheGreatPizzaTest.Core.Entities.Base;
+﻿using TheGreatPizzaTest.Core.Entities.Base;
 
 #nullable disable
 

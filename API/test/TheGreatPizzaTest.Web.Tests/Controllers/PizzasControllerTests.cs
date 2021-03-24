@@ -2,10 +2,7 @@
 using AutoFixture.Xunit2;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TheGreatPizzaTest.Application.DTOs;
 using TheGreatPizzaTest.Application.Interfaces;
