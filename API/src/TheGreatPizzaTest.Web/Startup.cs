@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
 using System.Linq;
@@ -19,7 +19,6 @@ using TheGreatPizzaTest.Core.Repositories.Base;
 using TheGreatPizzaTest.Infrastructure.Data;
 using TheGreatPizzaTest.Infrastructure.Repositories;
 using TheGreatPizzaTest.Infrastructure.Repositories.Base;
-using TheGreatPizzaTest.Web.Exceptions;
 using TheGreatPizzaTest.Web.Exceptions.Base;
 using TheGreatPizzaTest.Web.Middlewares;
 
@@ -41,7 +40,7 @@ namespace Presentation
                 options.AddDefaultPolicy(
                     policy =>
                     {
-                        policy.WithOrigins("http://localhost:4200")
+                        policy.WithOrigins(Configuration["AllowedOrigins"])
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                     });
@@ -54,6 +53,12 @@ namespace Presentation
             ConfigureModelBindingExceptionHandling(services);
 
             services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v3", new OpenApiInfo()
+                {
+                    Title = "The Great Pizza Test API",
+                    Version = "1.0.0",
+                    Description = "The Great Pizza Test API Documentation"
+                });
                 string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
@@ -98,7 +103,7 @@ namespace Presentation
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "The Great Pizza Test API");
+                c.SwaggerEndpoint("/swagger/v3/swagger.json", "The Great Pizza Test API");
             });
         }
 
