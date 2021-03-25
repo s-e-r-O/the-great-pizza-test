@@ -1,23 +1,37 @@
 # The Great Pizza Test - Angular App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
+- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
+- [Angular Material](https://material.angular.io) was used for styled components.
+- [NgRx](https://ngrx.io) was used for State Management.
 
-## Development server
+## Instructions
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Run `ng serve` for a dev server. Navigate to `http://localhost:4200/` where it should be up and running.
+- Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Code scaffolding
+## Troubleshooting
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- If your server is running in a url other than `https://localhost:5001`, please change the `apiUrl` variable under [`environments.ts`](./src/environments/environment.ts) accordingly.
 
-## Build
+## Some screenshots:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+<br>
+<div style="display:flex; justify-content: space-around;">
+<div>
+<p align="center">
+<img src="https://media.giphy.com/media/dIf1o8cvWJAU1Enws1/giphy.gif" alt="add-pizza" width="550">
+</p>
+<p align="center">
+<i>(Example: Adding a pizza)</i>
+</p>
+</div>
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<div>
+<p align="center">
+<img src="https://media.giphy.com/media/KcCFIDNCkYn4L4t5o7/giphy.gif" alt="add-topping" width="550">
+</p>
+<p align="center">
+<i>(Example: Adding toppings on pizzas, by using existent ingredients)</i>
+</p>
+</div>
+</div>
