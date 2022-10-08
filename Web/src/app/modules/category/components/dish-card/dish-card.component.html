@@ -1,10 +1,16 @@
 <mat-card class="dish-card">
-  <mat-card-title-group>
-    <mat-card-title>{{ dish.title }}</mat-card-title>
-    <mat-card-subtitle>{{ dish.price | currency }}</mat-card-subtitle>
-    <img mat-card-sm-image [src]="dish.imageUrl" />
-  </mat-card-title-group>
-  <mat-card-content>
-    {{ dish.description }}
-  </mat-card-content>
+  <section class="dish-card__info">
+    <mat-card-title-group>
+      <mat-card-title>{{ dish.title }}</mat-card-title>
+    </mat-card-title-group>
+    <mat-card-content class="dish-card__info__content">
+      <p>
+        {{ dish.description }}
+      </p>
+      <h3>
+        <b> {{ dish.price | currency: "BOB" }}</b>
+      </h3>
+    </mat-card-content>
+  </section>
+  <img class="dish-image" mat-card-md-image [src]="dish.imageUrl" />
 </mat-card>

@@ -5,10 +5,83 @@
     "imageUrl": "https://dam.cocinafacil.com.mx/wp-content/uploads/2020/12/plato-fuerte.jpg",
     "items": [
       {
-        "title": "Tortelini",
-        "description": "Delicioso y barato",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/42/Tortellini_Bolognesi.jpg",
-        "price": 20.22
+        "title": "Steak Mar y Tierra",
+        "description": "Tierno filete de lomo bañado salsa de langostinos y especias.",
+        "imageUrl": "https://previews.123rf.com/images/markstout/markstout1206/markstout120600167/14109118-un-filete-de-costilla-a-la-parrilla-con-langostinos-camarones-y-esp%C3%A1rragos.jpg",
+        "price": 75
+      },
+      {
+        "title": "Steak hongos y roquefort",
+        "description": "Filete de lomo bañado en salsa de queso roquefort, hongos y especias.",
+        "imageUrl": "https://assets.kraftfoods.com/recipe_images/New-York-Style-Steak-Mushroom-Saute-46713.jpg",
+        "price": 65
+      },
+      {
+        "title": "Suprema rellena con salsa de hongos y roquefort",
+        "description": "Pechuga de pollo, rellena de jamón y queso mozzarella, con hongos, bañada en salsa roquefort y especias.",
+        "imageUrl": "https://i.ytimg.com/vi/gWOIv-jyuos/maxresdefault.jpg",
+        "price": 58
+      },
+      {
+        "title": "Spaghetti portobello en salsa roquefort",
+        "description": "Spaghetti portobello, bañado en salsa de queso roquefort y especias.",
+        "imageUrl": "https://thumbs.dreamstime.com/b/pasta-spaghetti-four-cheese-parmesan-roquefort-gravy-gorgonzola-cream-garlic-black-pepper-traditi%C4%B1nal-italian-food-161683233.jpg",
+        "price": 45
+      },
+      {
+        "title": "Spaghetti en salsa rosa",
+        "description": "Spaghetti bañado en salsa rosa, champiñones y especias.",
+        "imageUrl": "https://recetasdesalsas.info/wp-content/uploads/2019/07/Salsa-Rosa.jpg",
+        "price": 55
+      },
+      {
+        "title": "Steak a la pimienta",
+        "description": "Jugoso filete de lomo de res bañado en salsa de cuatro pimientas, servido sobre puré papa cremoso.",
+        "imageUrl": "https://cdn.bolivia.com/gastronomia/2011/08/30/steak-pimienta-3211.jpg",
+        "price": 65
+      },
+      {
+        "title": "Lasagna",
+        "description": "Láminas de pasta fresca con deliciosa bolognesa, jamon y quesos.",
+        "imageUrl": "https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg",
+        "price": 60
+      }
+    ]
+  },
+  {
+    "id": "guarniciones",
+    "title": "Guarniciones",
+    "imageUrl": "https://www.nippon.com/es/ncommon/contents/japan-data/1756579/1756579.jpg",
+    "items": [
+      {
+        "title": "Papas Fritas",
+        "description": "Papas cortadas en forma de baston, freídas a la francesa.",
+        "imageUrl": "https://mejorconsalud.as.com/wp-content/uploads/2013/07/patatas-fritas-.jpg",
+        "price": 15
+      },
+      {
+        "title": "Yuca Frita",
+        "description": "Yuca cortada en forma de basto, freída a la francesa.",
+        "imageUrl": "https://www.thespruceeats.com/thmb/CFk5EI4K9P04EUZkXvmkSR7tlEc=/2701x2701/smart/filters:no_upscale()/crispy-yuca-fries-3028822_Hero-1-d476c59072464ae88c34df1e5901d87c.jpg",
+        "price": 15
+      },
+      {
+        "title": "Ensalada",
+        "description": "Ensalada compuesta de lechuga romana, tomates cherry, rábanos y palta, y miel orgánica",
+        "imageUrl": "https://t1.rg.ltmcdn.com/es/posts/3/7/1/ensalada_verde_14173_orig.jpg",
+        "price": 20
+      },
+      {
+        "title": "Spaghetti al pesto",
+        "description": "Spaghetti verdes a la crema de albahaca.",
+        "imageUrl": "https://www.divinacocina.es/wp-content/uploads/espaguetis-al-pesto-con-albahaca.jpg",
+        "price": 15
+      },
+      {
+        "title": "Spaghetti a la mantequilla",
+        "description": "Spaghetti salteados con mantequilla y un toque ligero de ajo.",
+        "imageUrl": "https://cdn7.kiwilimon.com/recetaimagen/20773/9528.jpg",
+        "price": 15
       }
     ]
   },
@@ -18,52 +91,16 @@
     "imageUrl": "https://i.blogs.es/948245/mousse_yogur/840_560.jpg",
     "items": [
       {
-        "title": "Tiramisu",
-        "description": "Pesadito",
-        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
-        "price": 10.99
+        "title": "Brownie con helado",
+        "description": "Brownie casero, coronado con helado de vainilla y sirope de chocolate.",
+        "imageUrl": "https://www.elespectador.com/resizer/ZR2qLpfQCGc4IC1X0lmdeAxTpHQ=/920x613/filters:format(jpeg)/cloudfront-us-east-1.images.arcpublishing.com/elespectador/BS7XK3UP25GMJO3G5IXXDXCRCE.png",
+        "price": 25
       },
       {
-        "title": "Tiramisu",
-        "description": "Pesadito",
-        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
-        "price": 10.99
-      },
-      {
-        "title": "Tiramisu",
-        "description": "Pesadito",
-        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
-        "price": 10.99
-      },
-      {
-        "title": "Tiramisu",
-        "description": "Pesadito",
-        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
-        "price": 10.99
-      },
-      {
-        "title": "Tiramisu",
-        "description": "Pesadito",
-        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
-        "price": 10.99
-      },
-      {
-        "title": "Tiramisu",
-        "description": "Pesadito",
-        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
-        "price": 10.99
-      },
-      {
-        "title": "Tiramisu",
-        "description": "Pesadito",
-        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
-        "price": 10.99
-      },
-      {
-        "title": "Tiramisu",
-        "description": "Pesadito",
-        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
-        "price": 10.99
+        "title": "Cheesecake de frutos rojos",
+        "description": "Tarta de queso bañada de frutos rojos, acompañada de frutillas frescas y arándanos.",
+        "imageUrl": "https://t2.rg.ltmcdn.com/es/posts/1/4/9/cheesecake_de_frutos_rojos_73941_orig.jpg",
+        "price": 25
       }
     ]
   },
@@ -73,16 +110,58 @@
     "imageUrl": "https://thekitchencommunity.org/wp-content/uploads/2021/11/Mixed-Drinks-1200x796.jpg",
     "items": [
       {
-        "title": "Coca Cola",
-        "description": "Tomala bien fria?",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Bouteille_de_Coca-Cola_d%27un_litre_cinq_001.jpg/220px-Bouteille_de_Coca-Cola_d%27un_litre_cinq_001.jpg",
-        "price": 5.99
+        "title": "Negroni",
+        "description": "Cocktail a base de ginebra, vermut rosso y campari en partes iguales.",
+        "imageUrl": "https://www.acouplecooks.com/wp-content/uploads/2020/04/Negroni-Boulevardier-007.jpg",
+        "price": 40
       },
       {
-        "title": "Pepsi",
-        "description": "Tomala bien fria?",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Bouteille_de_Coca-Cola_d%27un_litre_cinq_001.jpg/220px-Bouteille_de_Coca-Cola_d%27un_litre_cinq_001.jpg",
-        "price": 5.99
+        "title": "Manhattan",
+        "description": "Cocktail a base de Whisky y vermut rosso.",
+        "imageUrl": "https://www.foodandwine.com/thmb/tc1nSUqp0clEW4xiZGPdn1WAf1I=/2000x1333/filters:fill(auto,1)/Manhattan-Cocktail-FT-BLOG0522-dee9bf6e992f425eb496657aa2f14d47.jpg",
+        "price": 40
+      },
+      {
+        "title": "Caipiriña",
+        "description": "Cocktail a base de limón, azúcar y licor neutro.",
+        "imageUrl": "https://img-global.cpcdn.com/recipes/2f2fdbfb8e51142f/680x482cq70/receta-de-caipirinha-o-caipirina-foto-principal.jpg",
+        "price": 28
+      },
+      {
+        "title": "Mojito",
+        "description": "Cocktail a base de ron blanco, hierba buena y soda de lima limón.",
+        "imageUrl": "https://www.liquor.com/thmb/csP0nbraWhDYbHvQ8BmitxfIJYs=/735x0/mojito-720x720-primary-6a57f80e200c412e9a77a1687f312ff7.jpg",
+        "price": 28
+      },
+      {
+        "title": "Piña Colada",
+        "description": "Cocktail a base de crema de coco, ron blanco, jugo de piña y toque de crema.",
+        "imageUrl": "https://www.acouplecooks.com/wp-content/uploads/2020/11/Pina-Colada-056.jpg",
+        "price": 35
+      },
+      {
+        "title": "Coca Cola",
+        "description": "Vaso de 500ml de Coca Cola.",
+        "imageUrl": "https://m.media-amazon.com/images/I/71YBmiSj-cL._SX522_.jpg",
+        "price": 12
+      },
+      {
+        "title": "Coca Cola sin azúcar",
+        "description": "Vaso de 500ml de Coca Cola Zero.",
+        "imageUrl": "https://www.megalicor.bo/wp-content/uploads/2020/05/20030134.jpg",
+        "price": 12
+      },
+      {
+        "title": "Fanta",
+        "description": "Vaso de 500ml de Fanta.",
+        "imageUrl": "https://www.bigbasket.com/media/uploads/p/l/251019_8-fanta-soft-drink-orange-flavoured.jpg",
+        "price": 12
+      },
+      {
+        "title": "Sprite",
+        "description": "Vaso de 500ml de Sprite.",
+        "imageUrl": "https://s3-eu-west-1.amazonaws.com/straus/media/products2/a183856d49424886ac1b7443658487d2.jpg",
+        "price": 12
       }
     ]
   }
