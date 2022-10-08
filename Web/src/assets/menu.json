@@ -1,0 +1,89 @@
+[
+  {
+    "id": "platos-fuertes",
+    "title": "Platos Fuertes",
+    "imageUrl": "https://dam.cocinafacil.com.mx/wp-content/uploads/2020/12/plato-fuerte.jpg",
+    "items": [
+      {
+        "title": "Tortelini",
+        "description": "Delicioso y barato",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/42/Tortellini_Bolognesi.jpg",
+        "price": 20.22
+      }
+    ]
+  },
+  {
+    "id": "postres",
+    "title": "Postres",
+    "imageUrl": "https://i.blogs.es/948245/mousse_yogur/840_560.jpg",
+    "items": [
+      {
+        "title": "Tiramisu",
+        "description": "Pesadito",
+        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
+        "price": 10.99
+      },
+      {
+        "title": "Tiramisu",
+        "description": "Pesadito",
+        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
+        "price": 10.99
+      },
+      {
+        "title": "Tiramisu",
+        "description": "Pesadito",
+        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
+        "price": 10.99
+      },
+      {
+        "title": "Tiramisu",
+        "description": "Pesadito",
+        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
+        "price": 10.99
+      },
+      {
+        "title": "Tiramisu",
+        "description": "Pesadito",
+        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
+        "price": 10.99
+      },
+      {
+        "title": "Tiramisu",
+        "description": "Pesadito",
+        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
+        "price": 10.99
+      },
+      {
+        "title": "Tiramisu",
+        "description": "Pesadito",
+        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
+        "price": 10.99
+      },
+      {
+        "title": "Tiramisu",
+        "description": "Pesadito",
+        "imageUrl": "https://uglyducklingbakery.com/wp-content/uploads/2022/05/tiramisu-birthday-cake-square-e1652139415140.jpg",
+        "price": 10.99
+      }
+    ]
+  },
+  {
+    "id": "bebidas",
+    "title": "Bebidas",
+    "imageUrl": "https://thekitchencommunity.org/wp-content/uploads/2021/11/Mixed-Drinks-1200x796.jpg",
+    "items": [
+      {
+        "title": "Coca Cola",
+        "description": "Tomala bien fria?",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Bouteille_de_Coca-Cola_d%27un_litre_cinq_001.jpg/220px-Bouteille_de_Coca-Cola_d%27un_litre_cinq_001.jpg",
+        "price": 5.99
+      },
+      {
+        "title": "Pepsi",
+        "description": "Tomala bien fria?",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Bouteille_de_Coca-Cola_d%27un_litre_cinq_001.jpg/220px-Bouteille_de_Coca-Cola_d%27un_litre_cinq_001.jpg",
+        "price": 5.99
+      }
+    ]
+  }
+]

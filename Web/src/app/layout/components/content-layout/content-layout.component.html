@@ -2,6 +2,8 @@
   <div
     class="main-app-card__content"
     [@routeAnimations]="prepareOutlet(outlet)"
+    (@routeAnimations.start)="onAnimationEvent($event)"
+    (@routeAnimations.done)="onAnimationEvent($event)"
   >
     <router-outlet #outlet="outlet"></router-outlet>
   </div>

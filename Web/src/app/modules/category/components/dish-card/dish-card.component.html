@@ -1,0 +1,10 @@
+<mat-card class="dish-card">
+  <mat-card-title-group>
+    <mat-card-title>{{ dish.title }}</mat-card-title>
+    <mat-card-subtitle>{{ dish.price | currency }}</mat-card-subtitle>
+    <img mat-card-sm-image [src]="dish.imageUrl" />
+  </mat-card-title-group>
+  <mat-card-content>
+    {{ dish.description }}
+  </mat-card-content>
+</mat-card>

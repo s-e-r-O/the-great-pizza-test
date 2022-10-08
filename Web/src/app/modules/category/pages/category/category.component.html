@@ -1,0 +1,20 @@
+<app-card-image-header
+  *ngIf="category$ | async as category"
+  [imageSrc]="category.imageUrl"
+  [imageAlt]="category.title"
+  [headerTitle]="category.title"
+></app-card-image-header>
+<ng-container *ngIf="items$ | async as items">
+  <mat-list role="list" [@slideInOutList]="items.length">
+    <mat-list-item
+      role="listitem"
+      *ngFor="let item of items; trackBy: trackByFn; last as last"
+    >
+      <app-dish-card
+        class="dish-card"
+        [dish]="item"
+        [last]="last"
+      ></app-dish-card>
+    </mat-list-item>
+  </mat-list>
+</ng-container>

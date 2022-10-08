@@ -1,3 +1,6 @@
+@import "../variables.scss";
+@import "~@angular/material/theming";
+
 :host {
   display: flex;
   flex-direction: column;
@@ -8,8 +11,8 @@
   flex: 1;
   background-image: linear-gradient(
       0,
-      rgba(50, 0, 80, 0.5),
-      rgb(50, 0, 100, 0.5)
+      mat-color($primary, 0.5),
+      mat-color($primary, 200, 0.5)
     ),
-    url(/assets/bg-pizza.png);
+    url(/assets/bg-food.png);
 }

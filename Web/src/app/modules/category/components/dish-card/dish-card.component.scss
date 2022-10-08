@@ -1,0 +1,8 @@
+@import "../../../../../variables.scss";
+@import "~@angular/material/theming";
+
+.dish-card {
+  margin-bottom: 8px;
+  background: mat-color($accent, 50);
+  color: mat-color($accent, "50-contrast");
+}

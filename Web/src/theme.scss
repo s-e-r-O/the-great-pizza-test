@@ -1,0 +1,16 @@
+@import "~@angular/material/theming";
+@import "./variables.scss";
+
+@include mat-core();
+
+$theme: mat-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+  )
+);
+
+@include angular-material-theme($theme);

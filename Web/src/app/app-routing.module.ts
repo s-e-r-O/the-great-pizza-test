@@ -1,6 +1,26 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  BaseRouteReuseStrategy,
+  DetachedRouteHandle,
+  PreloadAllModules,
+  RouteReuseStrategy,
+  RouterModule,
+  Routes,
+} from '@angular/router';
 import { ContentLayoutComponent } from '@layout/components';
+import { CategoryComponent } from '@modules/category/pages';
+
+class CustomStrategy extends BaseRouteReuseStrategy {
+  handlers: { [key: string]: DetachedRouteHandle } = {};
+
+  shouldReuseRoute(
+    future: ActivatedRouteSnapshot,
+    curr: ActivatedRouteSnapshot
+  ): boolean {
+    return curr.component !== CategoryComponent;
+  }
+}
 
 const routes: Routes = [
   {
@@ -8,18 +28,13 @@ const routes: Routes = [
     component: ContentLayoutComponent,
     children: [
       {
-        path: 'pizzas',
+        path: '',
         loadChildren: () =>
-          import('./modules/pizzas/pizzas.module').then((m) => m.PizzasModule),
-      },
-      {
-        path: 'ingredients',
-        loadChildren: () =>
-          import('./modules/ingredients/ingredients.module').then(
-            (m) => m.IngredientsModule
+          import('./modules/category/category.module').then(
+            (m) => m.CategoryModule
           ),
       },
-      { path: '**', redirectTo: '/pizzas', pathMatch: 'full' },
+      { path: '**', redirectTo: '/', pathMatch: 'full' },
     ],
   },
 ];
@@ -32,5 +47,6 @@ const routes: Routes = [
     }),
   ],
   exports: [RouterModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: CustomStrategy }],
 })
 export class AppRoutingModule {}

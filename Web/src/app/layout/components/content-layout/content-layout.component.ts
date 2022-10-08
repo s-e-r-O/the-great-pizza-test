@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { routeAnimation } from '@app/animations';
+import { AnimationEvent } from '@angular/animations';
 @Component({
   selector: 'app-content-layout',
   templateUrl: './content-layout.component.html',
@@ -12,8 +13,7 @@ export class ContentLayoutComponent implements OnInit {
 
   ngOnInit(): void {}
   prepareOutlet(outlet: RouterOutlet): void {
-    return (
-      outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation
-    );
+    return outlet && outlet.activatedRoute.snapshot.params.id;
   }
+  onAnimationEvent(event: AnimationEvent) {}
 }

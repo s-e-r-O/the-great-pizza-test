@@ -1,16 +1,20 @@
-<nav mat-tab-nav-bar backgroundColor="primary" class="app-toolbar">
-  <a mat-tab-link class="home-tab" routerLink="/">
-    <mat-icon class="home-tab__icon">local_pizza</mat-icon>
-    <strong>The Great Pizza Test</strong>
-  </a>
-  <ng-container *ngIf="activeLink$ | async as activeLink">
-    <a
-      mat-tab-link
-      *ngFor="let link of links"
-      [active]="activeLink.startsWith(link.url)"
-      [routerLink]="link.url"
-    >
-      {{ link.label }}
-    </a>
+<nav
+  mat-tab-nav-bar
+  backgroundColor="primary"
+  class="app-toolbar"
+  mat-align-tabs="center"
+>
+  <ng-container *ngIf="categories$ | async as categories">
+    <ng-container *ngIf="activeUrl$ | async as activeUrl">
+      <a
+        mat-tab-link
+        *ngFor="let category of categories"
+        [active]="activeUrl.endsWith(category.id)"
+        [routerLink]="category.id"
+        [ngClass]="{ hidden: mobileQuery.matches }"
+      >
+        {{ category.title }}
+      </a>
+    </ng-container>
   </ng-container>
 </nav>

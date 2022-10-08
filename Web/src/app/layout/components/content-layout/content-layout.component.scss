@@ -1,3 +1,6 @@
+@import "../../../../variables.scss";
+@import "~@angular/material/theming";
+
 .main-app-card {
   min-height: 100%;
   max-width: 800px;
@@ -5,6 +8,7 @@
   margin: auto;
   overflow: hidden;
   padding: 0;
+  background-color: mat-color($primary, 50);
 
   &__content {
     margin: 16px;

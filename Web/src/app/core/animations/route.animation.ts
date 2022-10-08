@@ -10,22 +10,28 @@ import {
 
 export const slideInFrom = (side: 'left' | 'right') => [
   style({ position: 'relative' }),
-  query(':enter, :leave', [
-    style({
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      [side]: 0,
-      width: '100%',
-      opacity: 1,
-    }),
-  ]),
+  query(
+    ':enter, :leave',
+    [
+      style({
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        [side]: 0,
+        width: '100%',
+        opacity: 1,
+      }),
+    ],
+    { optional: true }
+  ),
   query(':enter', [style({ [side]: '-100%', opacity: 0 })]),
-  query(':leave', animateChild()),
+  query(':leave', animateChild(), { optional: true }),
   group([
-    query(':leave', [
-      animate('300ms ease-out', style({ [side]: '100%', opacity: 0 })),
-    ]),
+    query(
+      ':leave',
+      [animate('300ms ease-out', style({ [side]: '100%', opacity: 0 }))],
+      { optional: true }
+    ),
     query(':enter', [
       animate('300ms ease-out', style({ [side]: '0%', opacity: 1 })),
     ]),
@@ -34,8 +40,7 @@ export const slideInFrom = (side: 'left' | 'right') => [
 ];
 
 export const routeAnimation = trigger('routeAnimations', [
-  transition('IngredientsComponent => PizzasComponent', slideInFrom('left')),
-  transition('PizzasComponent => IngredientsComponent', slideInFrom('right')),
+  transition('* <=> *', slideInFrom('left')),
   transition('* <=> fade', [
     style({ position: 'relative' }),
     query(':enter, :leave', [
